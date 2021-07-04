@@ -11,12 +11,17 @@ import java.time.LocalDate;
  *
  * @author User
  */
-public abstract class Person {
+public class Person {
     private String nama;
     private LocalDate tanggalLahir;
     private String gender;
     private String alamat;
 
+    @Override
+    public String toString() {
+        return "Person{" + "nama=" + nama + ", tanggalLahir=" + tanggalLahir + ", gender=" + gender + ", alamat=" + alamat + '}';
+    }
+    
     public String getNama() {
         return nama;
     }

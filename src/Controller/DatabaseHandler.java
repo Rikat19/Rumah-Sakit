@@ -17,11 +17,11 @@ import javax.swing.JOptionPane;
 public class DatabaseHandler {
 
     public Connection con;
-    private String driver = "com.mysql.cj.jdbc.Driver";
-//    private String url = "jdbc:mysql://localhost/pbo";
-    private String url = "jdbc:mysql://localhost/db_test?serverTimezone=" + TimeZone.getDefault().getID();
-    private String username = "root";
-    private String password = "";
+    private final String driver = "com.mysql.cj.jdbc.Driver";
+    //private final String url = "jdbc:mysql://localhost/pbo";
+    private final String url = "jdbc:mysql://localhost/pbo?serverTimezone=" + TimeZone.getDefault().getID();
+    private final String username = "root";
+    private final String password = "";
 
     private Connection logOn() {
         try {

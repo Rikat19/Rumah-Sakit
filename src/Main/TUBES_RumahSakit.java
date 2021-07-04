@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Main;
-
+import Controller.Control;
+import Model.Person;
+import java.util.ArrayList;
 /**
  *
  * @author Richard
@@ -15,7 +17,6 @@ public class TUBES_RumahSakit {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
     }
     
 }
