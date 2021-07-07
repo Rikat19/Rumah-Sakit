@@ -2,6 +2,8 @@
 package View;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,7 +15,7 @@ import javax.swing.JLabel;
 public class Menu_Staff {
        
     public Menu_Staff() {
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Menu Staff");
         frame.setSize(650,550);
         frame.setLocationRelativeTo(null);
         
@@ -32,8 +34,26 @@ public class Menu_Staff {
         
         frame.add(editPasien);
         frame.add(lihatPasien);
+        lihatPasien.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Lihat_Pasien();
+        }
+        });
+        
         frame.add(tambahPasien);
+        tambahPasien.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Tambah_Pasien();
+        }
+        });
+        
         frame.add(hapusPasien);
+        hapusPasien.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Hapus_Pasien();
+        }
+        });
+        
         
 //        // edit data storage
         JLabel editStorage = new JLabel();
@@ -50,8 +70,26 @@ public class Menu_Staff {
         
         frame.add(editStorage);
         frame.add(lihatStorage);
+        lihatStorage.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Lihat_Data_Storage();
+        }
+        });
+        
         frame.add(tambahStorage);
+        tambahStorage.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Tambah_Data_Storage();
+        }
+        });
+        
         frame.add(hapusStorage);
+        hapusStorage.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Hapus_Data_Storage();
+        }
+        });
+        
         
 //        // jadwal dokter
         JLabel jadwalDokter = new JLabel();
@@ -64,6 +102,12 @@ public class Menu_Staff {
         
         frame.add(jadwalDokter);
         frame.add(lihatJadwal);
+        lihatJadwal.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Jadwal_Dokter();
+        }
+        });
+        
         
 //        // kapasitas kamar
         JLabel kapasitasKamar = new JLabel();
@@ -76,6 +120,12 @@ public class Menu_Staff {
         
         frame.add(kapasitasKamar);
         frame.add(lihatKamar);
+        lihatKamar.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Kapasitas_Kamar();
+        }
+        });
+        
         
 //        // pembayaran tagihan
         JLabel pembayaranTagihan = new JLabel();
@@ -88,6 +138,12 @@ public class Menu_Staff {
         
         frame.add(pembayaranTagihan);
         frame.add(tagihanPasien);
+        tagihanPasien.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Tagihan_Pasien();
+        }
+        });
+        
         
 //        // logout      
         JButton logout = new JButton("Logout");
@@ -95,12 +151,18 @@ public class Menu_Staff {
         Color red = new Color(250, 0, 0);
         logout.setBackground(red);
         frame.add(logout);
-        
+        logout.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Logout();
+        }
+        });
         
         frame.setLayout(null);
         frame.setVisible(true);
         
     }
+    
+    
     public static void main(String[] args) {
         new Menu_Staff();
     }
