@@ -11,9 +11,7 @@ import javax.swing.JLabel;
  * @author Richard
  */
 public class Menu_Staff {
-    
-    JButton button;
-    
+       
     public Menu_Staff() {
         JFrame frame = new JFrame();
         frame.setSize(650,550);
