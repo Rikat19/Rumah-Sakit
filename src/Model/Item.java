@@ -14,6 +14,14 @@ public class Item {
     private int stock;
     private int harga;
 
+    public int getHarga() {
+        return harga;
+    }
+
+    public void setHarga(int harga) {
+        this.harga = harga;
+    }
+
     public String getNama() {
         return nama;
     }
@@ -29,13 +37,4 @@ public class Item {
     public void setStock(int stock) {
         this.stock = stock;
     }
-
-    public int getHarga() {
-        return harga;
-    }
-
-    public void setHarga(int harga) {
-        this.harga = harga;
-    }
-    
 }

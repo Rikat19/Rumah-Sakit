@@ -39,4 +39,20 @@ public class Control {
         }
         return (persons);
     }
+    void cariPersonDariId(Person subject,String id){
+        conn.connect();
+        String query = "SELECT * FROM person WHERE IDPerson = " + id;
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                subject.setNama(rs.getString("Nama"));
+                subject.setGender(rs.getString("Gender"));
+                subject.setAlamat(rs.getString("Alamat"));
+                subject.setTanggalLahir(rs.getDate("TglLahir").toLocalDate());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

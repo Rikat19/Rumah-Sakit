@@ -14,17 +14,17 @@ import java.util.LinkedList;
  */
 public class Pasien extends Person{
     public Cabang cabang;
-    public LinkedList<Penyakit> penyakit;
     private String daerahPerawatan;
     private LocalDate tanggalMasuk;
     private LocalDate tanggalKeluar;
     private boolean dibayar;
+    public LinkedList<Penyakit> penyakit;
     public LinkedList<Perawatan> perawatan;
 
     public String getDaerahPerawatan() {
         return daerahPerawatan;
     }
-
+    
     public void setDaerahPerawatan(String daerahPerawatan) {
         this.daerahPerawatan = daerahPerawatan;
     }

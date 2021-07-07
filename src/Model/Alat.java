@@ -12,4 +12,22 @@ package Model;
 public class Alat extends Item{
     private String jenisAlat;
     private boolean kondisi;
+
+    public String getJenisAlat() {
+        return jenisAlat;
+    }
+
+    public void setJenisAlat(String jenisAlat) {
+        this.jenisAlat = jenisAlat;
+    }
+
+    public boolean isKondisi() {
+        return kondisi;
+    }
+
+    public void setKondisi(boolean kondisi) {
+        this.kondisi = kondisi;
+    }
+    
+    
 }

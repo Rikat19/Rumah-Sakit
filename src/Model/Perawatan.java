@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class Perawatan{
     private String nama;
-    private int biaya;
     Dokter dokter;
     public ArrayList<Alat> alat;
     public ArrayList<Obat> obat;
@@ -24,14 +23,6 @@ public class Perawatan{
 
     public void setNama(String nama) {
         this.nama = nama;
-    }
-
-    public int getBiaya() {
-        return biaya;
-    }
-
-    public void setBiaya(int biaya) {
-        this.biaya = biaya;
     }
 
     public Dokter getDokter() {
