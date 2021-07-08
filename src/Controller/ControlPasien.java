@@ -11,11 +11,9 @@ import Model.Obat;
 import Model.Pasien;
 import Model.Penyakit;
 import Model.Perawatan;
-import Model.Person;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -24,11 +22,11 @@ import java.util.LinkedList;
  * @author User
  */
 public class ControlPasien {
+    Control c = new Control();
 
     static DatabaseHandler conn = new DatabaseHandler();
 
     public ArrayList<Pasien> getAllPasien() {
-        Control c = new Control();
         ArrayList<Pasien> pasien = new ArrayList<>();
         conn.connect();
         String query = "SELECT * FROM Pasien";
@@ -54,12 +52,62 @@ public class ControlPasien {
                 user.setDaerahPerawatan(rs.getString("Daerah"));
                 user.setTanggalMasuk(rs.getDate("TglMasuk").toLocalDate());
                 user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
+                user.setCabang(c.getCabangDariId(rs.getInt("IDCabang")));
                 pasien.add(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return (pasien);
+    }
+    
+    public void insertPasien(Pasien subject){
+        c.insertPerson(subject);
+        conn.connect();;
+        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() +"," + subject.getCabang().getId() + ",'" + subject.getTanggalMasuk().toString() + "','" + subject.getTanggalKeluar().toString() + "','" + subject.isDibayar() + "');";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public Pasien getPasienDariId(int id){
+        Pasien pasien = new Pasien();
+        conn.connect();
+        String query = "SELECT * FROM Pasien WHERE IDPasien = " + id;
+        try {
+            Statement stmt = conn.con.createStatement();
+            Statement stmtPerson = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Pasien user = new Pasien();
+                c.cariPersonDariId(user,rs.getString("IDPerson"));
+                
+                LinkedList<Integer> listId = cariIdPenyakitDariIdPasien(rs.getInt("IDPasien"));
+                user.penyakit = new LinkedList<>();
+                for (int i = 0; i < listId.size(); i++) {
+                    user.penyakit.add(cariPenyakitDariId(listId.get(i)));
+                }
+                listId = cariIdPerawatanDariIdPasien(rs.getInt("IDPasien"));
+                user.perawatan = new LinkedList<>();
+                for (int i = 0; i < listId.size(); i++) {
+                    user.perawatan.add(cariPerawatanDariIdPerawatan(listId.get(i)));
+                }
+                
+                user.setDaerahPerawatan(rs.getString("Daerah"));
+                user.setTanggalMasuk(rs.getDate("TglMasuk").toLocalDate());
+                user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
+                user.setDibayar(rs.getBoolean("dibayar"));
+                user.setCabang(c.getCabangDariId(rs.getInt("IDCabang")));
+                pasien = user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pasien;
     }
 
     LinkedList<Integer> cariIdPenyakitDariIdPasien(int id) {
@@ -188,6 +236,7 @@ public class ControlPasien {
                 item.setNama(rs.getString("Nama"));
                 item.setStock(rs.getInt("Stok"));
                 item.setHarga(rs.getInt("Harga"));
+                item.setIdCabang(rs.getInt("IDCabang"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

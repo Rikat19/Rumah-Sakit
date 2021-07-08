@@ -13,6 +13,15 @@ public class Item {
     private String nama;
     private int stock;
     private int harga;
+    private int idCabang;
+
+    public int getIdCabang() {
+        return idCabang;
+    }
+
+    public void setIdCabang(int idCabang) {
+        this.idCabang = idCabang;
+    }
 
     public int getHarga() {
         return harga;

@@ -7,10 +7,12 @@ package Main;
 import Controller.Control;
 import Controller.ControlDokter;
 import Controller.ControlPasien;
+import Model.Cabang;
 import Model.Dokter;
 import Model.Pasien;
 import Model.Person;
 import java.util.ArrayList;
+import java.util.LinkedList;
 /**
  *
  * @author Richard
@@ -20,6 +22,7 @@ public class TUBES_RumahSakit {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Control cntrl = new Control();
         
     }
     

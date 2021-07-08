@@ -12,7 +12,7 @@ import java.util.LinkedList;
  *
  * @author User
  */
-public class Pasien extends Person{
+public class Pasien extends Person implements InterfaceConstantDaerah {
     public Cabang cabang;
     private String daerahPerawatan;
     private LocalDate tanggalMasuk;
@@ -21,12 +21,28 @@ public class Pasien extends Person{
     public LinkedList<Penyakit> penyakit;
     public LinkedList<Perawatan> perawatan;
 
+    public Cabang getCabang() {
+        return cabang;
+    }
+
+    public void setCabang(Cabang cabang) {
+        this.cabang = cabang;
+    }
+
     public String getDaerahPerawatan() {
         return daerahPerawatan;
     }
-    
-    public void setDaerahPerawatan(String daerahPerawatan) {
-        this.daerahPerawatan = daerahPerawatan;
+
+    public void setDaerahPerawatan(String daerah) {
+        this.daerahPerawatan = daerah;
+    }
+
+    public boolean isDibayar() {
+        return dibayar;
+    }
+
+    public void setDibayar(boolean dibayar) {
+        this.dibayar = dibayar;
     }
 
     public LocalDate getTanggalMasuk() {
