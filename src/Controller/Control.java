@@ -6,8 +6,10 @@
 package Controller;
 
 
+import Model.Alat;
 import Model.Cabang;
 import Model.Item;
+import Model.Obat;
 import Model.Person;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -112,11 +114,45 @@ public class Control {
         LinkedList<Item> list = getAllItem();
         for (int i = 0; i < list.size(); i++) {
             if(list.get(i).getIdCabang() != id){
-                
                 list.remove(i);
             }
         }
         return list;
+    }
+    
+    Boolean PolioToObat(Item item,int id){
+        conn.connect();
+        String query = "SELECT * FROM obat WHERE IDItem = " + id;
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Obat obat = (Obat) item;
+                obat.setDosis(rs.getString("Dosis"));
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    Boolean polioToAlat(Item item,int id){
+        conn.connect();
+        String query = "SELECT * FROM alat WHERE IDItem = " + id;
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Alat alat = (Alat) item;
+                alat.setJenisAlat(rs.getString("Jenis"));
+                alat.setKondisi(rs.getBoolean("Kondisi"));
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
     
     LinkedList<Item> getAllItem(){
@@ -128,10 +164,13 @@ public class Control {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Item item = new Item();
+                PolioToObat(item,rs.getInt("IDItem"));
+                PolioToObat(item,rs.getInt("IDItem"));
                 item.setNama(rs.getString("Nama"));
                 item.setStock(rs.getInt("Stok"));
                 item.setHarga(rs.getInt("Harga"));
                 item.setIdCabang(rs.getInt("IDCabang"));
+                
                 list.add(item);
             }
         } catch (SQLException e) {

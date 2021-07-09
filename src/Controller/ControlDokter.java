@@ -17,10 +17,10 @@ import java.util.LinkedList;
  * @author User
  */
 public class ControlDokter {
+    Control c = new Control();
     static DatabaseHandler conn = new DatabaseHandler();
 
     public ArrayList<Dokter> getAllDokter() {
-        Control c = new Control();
         ArrayList<Dokter> dokter = new ArrayList<>();
         conn.connect();
         String query = "SELECT * FROM Dokter";
@@ -42,7 +42,6 @@ public class ControlDokter {
     }
     
     public Dokter cariDokterDariId(int id){
-        Control c = new Control();
         Dokter subject = new Dokter();
         conn.connect();
         String query = "SELECT * FROM Dokter WHERE IDDokter = " + id;

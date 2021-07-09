@@ -52,7 +52,7 @@ public class ControlPasien {
                 user.setDaerahPerawatan(rs.getString("Daerah"));
                 user.setTanggalMasuk(rs.getDate("TglMasuk").toLocalDate());
                 user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
-                user.setCabang(c.getCabangDariId(rs.getInt("IDCabang")));
+                user.setIdCabang(rs.getInt("IDCabang"));
                 pasien.add(user);
             }
         } catch (SQLException e) {
@@ -64,7 +64,7 @@ public class ControlPasien {
     public void insertPasien(Pasien subject){
         c.insertPerson(subject);
         conn.connect();;
-        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() +"," + subject.getCabang().getId() + ",'" + subject.getTanggalMasuk().toString() + "','" + subject.getTanggalKeluar().toString() + "','" + subject.isDibayar() + "');";
+        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() +"," + subject.getIdCabang() + ",'" + subject.getTanggalMasuk().toString() + "','" + subject.getTanggalKeluar().toString() + "','" + subject.isDibayar() + "');";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);
@@ -101,7 +101,7 @@ public class ControlPasien {
                 user.setTanggalMasuk(rs.getDate("TglMasuk").toLocalDate());
                 user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
                 user.setDibayar(rs.getBoolean("dibayar"));
-                user.setCabang(c.getCabangDariId(rs.getInt("IDCabang")));
+                user.setIdCabang(rs.getInt("IDCabang"));
                 pasien = user;
             }
         } catch (SQLException e) {
@@ -175,7 +175,6 @@ public class ControlPasien {
     }
     
     Obat cariObatDariIdObat(int id){
-        ControlPasien c = new ControlPasien();
         Obat obat = new Obat();
         conn.connect();
         String query = "SELECT * FROM obat WHERE IDObat = " + id;
@@ -183,7 +182,7 @@ public class ControlPasien {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                c.cariItemDariIdItem(obat, rs.getInt("IDItem"));
+                cariItemDariIdItem(obat, rs.getInt("IDItem"));
                 obat.setDosis(rs.getString("Dosis"));
             }
         } catch (SQLException e) {
@@ -208,7 +207,6 @@ public class ControlPasien {
     }
     
     Alat cariAlatDariIdAlat(int id){
-        ControlPasien c = new ControlPasien();
         Alat alat = new Alat();
         conn.connect();
         String query = "SELECT * FROM alat WHERE IDAlat = " + id;
@@ -216,7 +214,7 @@ public class ControlPasien {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                c.cariItemDariIdItem(alat, rs.getInt("IDItem"));
+                cariItemDariIdItem(alat, rs.getInt("IDItem"));
                 alat.setJenisAlat(rs.getString("Jenis"));
                 alat.setKondisi(rs.getBoolean("Kondisi"));
             }
