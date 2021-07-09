@@ -70,6 +70,7 @@ public class Hapus_Data_Storage {
         cariId.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             Hapus_dengan_ID();
+            frame.hide();
         }
         });
         
@@ -81,6 +82,7 @@ public class Hapus_Data_Storage {
         cari.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             // cari
+            //frame.hide();
         }
         });
         
@@ -102,6 +104,7 @@ public class Hapus_Data_Storage {
         hapus.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             // hapus database
+            //frame.hide();
         }
         });
 
@@ -114,6 +117,7 @@ public class Hapus_Data_Storage {
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Menu_Staff();
+            frame.hide();
         }
         });
         
@@ -173,6 +177,7 @@ public class Hapus_Data_Storage {
         cariId.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Hapus_Data_Storage();
+            frame.hide();
         }
         });
         
@@ -217,6 +222,7 @@ public class Hapus_Data_Storage {
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Menu_Staff();
+            frame.hide();
         }
         });
         

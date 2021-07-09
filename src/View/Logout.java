@@ -41,11 +41,13 @@ public class Logout {
         ya.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new Login();
+                frame.hide();
             }
         });
         tidak.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new Menu_Staff();
+                frame.hide();
             }
         });
         

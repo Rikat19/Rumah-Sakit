@@ -89,6 +89,7 @@ public class Hapus_Pasien {
         cariId.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             Hapus_dengan_ID();
+            frame.hide();
         }
         });
         
@@ -137,6 +138,7 @@ public class Hapus_Pasien {
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Menu_Staff();
+            frame.hide();
         }
         });
         
@@ -169,7 +171,7 @@ public class Hapus_Pasien {
 //        });
 
 //        cari
-        JButton cariBio = new JButton("Cari dengan Biodata");
+        JButton cariBio = new JButton("Cari dengan Nama");
         cariBio.setBounds(210, 140, 140, 25);
         Color green = new Color(0, 200, 0);
         cariBio.setBackground(green);
@@ -177,6 +179,7 @@ public class Hapus_Pasien {
         cariBio.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Hapus_Pasien();
+            frame.hide();
         }
         });
         
@@ -225,6 +228,7 @@ public class Hapus_Pasien {
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Menu_Staff();
+            frame.hide();
         }
         });
         

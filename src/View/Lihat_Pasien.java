@@ -58,6 +58,7 @@ public class Lihat_Pasien {
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Menu_Staff();
+            frame.hide();
         }
         });
         

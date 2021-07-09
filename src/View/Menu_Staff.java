@@ -37,6 +37,7 @@ public class Menu_Staff {
         lihatPasien.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Lihat_Pasien();
+            frame.hide();
         }
         });
         
@@ -44,6 +45,7 @@ public class Menu_Staff {
         tambahPasien.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Tambah_Pasien();
+            frame.hide();
         }
         });
         
@@ -51,6 +53,7 @@ public class Menu_Staff {
         hapusPasien.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Hapus_Pasien();
+            frame.hide();
         }
         });
         
@@ -73,6 +76,7 @@ public class Menu_Staff {
         lihatStorage.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Lihat_Data_Storage();
+            frame.hide();
         }
         });
         
@@ -80,6 +84,7 @@ public class Menu_Staff {
         tambahStorage.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Tambah_Data_Storage();
+            frame.hide();
         }
         });
         
@@ -87,6 +92,7 @@ public class Menu_Staff {
         hapusStorage.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Hapus_Data_Storage();
+            frame.hide();
         }
         });
         
@@ -105,6 +111,8 @@ public class Menu_Staff {
         lihatJadwal.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Jadwal_Dokter();
+            frame.hide();
+            
         }
         });
         
@@ -123,6 +131,7 @@ public class Menu_Staff {
         lihatKamar.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Kapasitas_Kamar();
+            frame.hide();
         }
         });
         
@@ -141,6 +150,7 @@ public class Menu_Staff {
         tagihanPasien.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Tagihan_Pasien();
+            frame.hide();
         }
         });
         
@@ -154,6 +164,7 @@ public class Menu_Staff {
         logout.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Logout();
+            frame.hide();
         }
         });
         
