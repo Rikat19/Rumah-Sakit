@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -64,8 +65,7 @@ public class Kapasitas_Kamar {
         frame.add(back);
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Menu_Staff();
-            frame.hide();
+            frame.setVisible(false);
         }
         });
         

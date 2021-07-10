@@ -111,7 +111,7 @@ public class Menu_Staff {
         lihatJadwal.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Jadwal_Dokter();
-            frame.hide();
+//            frame.hide();
             
         }
         });
@@ -131,7 +131,7 @@ public class Menu_Staff {
         lihatKamar.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
             new Kapasitas_Kamar();
-            frame.hide();
+//            frame.hide();
         }
         });
         

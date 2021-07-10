@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -61,11 +62,10 @@ public class Jadwal_Dokter {
         Color red = new Color(250, 0, 0);
         back.setBackground(red);
         frame.add(back);
-        back.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            new Menu_Staff();
-            frame.hide();
-        }
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+            }
         });
         
         frame.setLayout(null);
