@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Dokter extends Person{
     private int biayaJasa;
     private String specialist;
-    private String jadwal;
+    private int[][] jadwal;
     public ArrayList<String> cabang;
 
     public int getBiayaJasa() {
@@ -33,13 +33,15 @@ public class Dokter extends Person{
         this.specialist = specialist;
     }
 
-    public String getJadwal() {
+    public int[][] getJadwal() {
         return jadwal;
     }
 
-    public void setJadwal(String jadwal) {
+    public void setJadwal(int[][] jadwal) {
         this.jadwal = jadwal;
     }
+
+    
     
     
 }

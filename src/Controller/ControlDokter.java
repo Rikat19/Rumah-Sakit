@@ -5,7 +5,9 @@
  */
 package Controller;
 
+import static Controller.ControlPasien.conn;
 import Model.Dokter;
+import Model.Pasien;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -32,13 +34,48 @@ public class ControlDokter {
                 c.cariPersonDariId(subject, rs.getString("IDPerson"));
                 subject.setBiayaJasa(rs.getInt("BiayaJasa"));
                 subject.setSpecialist(rs.getString("Specialist"));
-                subject.setJadwal(rs.getString("JamPraktek"));
+                subject.setJadwal(parseJadwalToInt(rs.getString("JadwalPraktek")));
                 dokter.add(subject);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return dokter;
+    }
+    
+    public int[][] parseJadwalToInt(String x){
+        String[] strArray = x.split(",");
+        int[][] hasil = new int[7][4];
+        int y = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 7; j++,y++) {
+                hasil[j][i] = Integer.parseInt(strArray[y]);
+            }
+        }
+        return hasil;
+    }
+    
+    public String parseJadwalToString(int[][] x){
+        String y = "";
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 7; j++) {
+                y += x[j][i] + ",";
+            }
+        }
+        return y;
+    }
+    
+    public void insertDokter(Dokter subject){
+        c.insertPerson(subject);
+        conn.connect();;
+        String query = "INSERT INTO dokter (IDPerson, BiayaJasa, Specialist, JamPraktek) VALUES (" + subject.getId() +"," + subject.getBiayaJasa() + ",'" + subject.getSpecialist() + "','" + parseJadwalToString(subject.getJadwal()) + "');";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     public Dokter cariDokterDariId(int id){
@@ -52,7 +89,7 @@ public class ControlDokter {
                 c.cariPersonDariId(subject, rs.getString("IDPerson"));
                 subject.setBiayaJasa(rs.getInt("BiayaJasa"));
                 subject.setSpecialist(rs.getString("Specialist"));
-                subject.setJadwal(rs.getString("JamPraktek"));
+                subject.setJadwal(parseJadwalToInt(rs.getString("JadwalPraktek")));
             }
         }catch (SQLException e) {
             e.printStackTrace();

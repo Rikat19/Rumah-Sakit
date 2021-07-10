@@ -61,9 +61,9 @@ public class Control {
             e.printStackTrace();
         }
     }
-    void insertPerson(Person subject){
+    public void insertPerson(Person subject){
         conn.connect();
-        String query = "INSERT INTO person (IDPerson, IDCabang, Daerah, Alamat) VALUES ('" + subject.getNama() + "','" + subject.getTanggalLahir().toString() + "','" +  subject.getAlamat() + "','" + subject.getAlamat() + "');";
+        String query = "INSERT INTO person (Nama, TglLahir, Gender, Alamat) VALUES ('" + subject.getNama() + "','" + subject.getTanggalLahir().toString() + "','" +  subject.getGender() + "','" + subject.getAlamat() + "');";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);

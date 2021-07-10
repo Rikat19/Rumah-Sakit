@@ -23,8 +23,6 @@ public class TUBES_RumahSakit {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ControlStaff cntrl = new ControlStaff();
-        
+        ControlDokter c = new ControlDokter();
     }
-    
 }
