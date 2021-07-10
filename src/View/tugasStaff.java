@@ -9,9 +9,6 @@ package View;
  *
  * @author Devan
  */
-public class Tambah_Staff {
-
-    public Tambah_Staff() {
-    }
+class tugasStaff {
     
 }
