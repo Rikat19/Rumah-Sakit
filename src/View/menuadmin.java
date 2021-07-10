@@ -40,21 +40,21 @@ public class menuadmin {
         frame.add(lihatCabang);
         lihatCabang.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Lihat_Cabang();
+        //    new Lihat_Cabang();
         }
         });
         
         frame.add(tambahCabang);
         tambahCabang.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Tambah_Cabang();
+        //    new Tambah_Cabang();
         }
         });
         
         frame.add(hapusCabang);
         hapusCabang.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Hapus_Cabang();
+        //    new Hapus_Cabang();
         }
         });
         
@@ -134,7 +134,7 @@ public class menuadmin {
         frame.add(lihatBebanGajiTotal);
         lihatBebanGajiTotal.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Lihat_Beban_Gaji_Total();
+           new Lihat_Beban_Gaji_Total();
         }
         });
         
