@@ -16,12 +16,12 @@ import javax.swing.event.DocumentListener;
  *
  * @author Richard
  */
-public class Tambah_Data_Storage{
+public class Tambah_Alat{
     
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
     
-    public Tambah_Data_Storage(){
+    public Tambah_Alat(){
         JFrame frame = new JFrame("Tambah Data Storage");
         frame.setSize(550,350);
         frame.setLocationRelativeTo(null);
@@ -150,6 +150,6 @@ public class Tambah_Data_Storage{
     }
     
     public static void main(String[] args) {
-        new Tambah_Data_Storage();
+        new Tambah_Alat();
     }
 }

@@ -183,25 +183,7 @@ public class Tambah_Pasien{
 //            
 //        });
 
-//        Tanggal Keluar
-// * date
-        JLabel keluar = new JLabel();
-        keluar.setText("Tanggal Keluar\t:");
-        keluar.setBounds(15,295,175,25);
-        keluar.setVisible(true);
-        frame.add(keluar);
-        
-        JTextField textfieldKeluar = new JTextField();
-        textfieldKeluar.setBounds(210, 295, 300, 25);
-        textfieldKeluar.setBackground(Color.WHITE);
-        frame.add(textfieldKeluar);
 
-//        textfieldAlamat.getDocument().addDocumentListener(new DocumentListener() {
-//            public void inputName(DocumentEvent e){
-//                System.out.println("");
-//            }
-//            
-//        });
         
 //        cari
         JButton cari = new JButton("Cari");

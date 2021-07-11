@@ -120,9 +120,29 @@ public class Tagihan_Pasien {
         alamatPasien.setBackground(Color.WHITE);
         frame.add(alamatPasien);
         
+        //        Tanggal Keluar
+// * date
+        JLabel keluar = new JLabel();
+        keluar.setText("Tanggal Keluar\t:");
+        keluar.setBounds(15,345,175,25);
+        keluar.setVisible(true);
+        frame.add(keluar);
+        
+        JTextField textfieldKeluar = new JTextField();
+        textfieldKeluar.setBounds(205, 345, 300, 25);
+        textfieldKeluar.setBackground(Color.WHITE);
+        frame.add(textfieldKeluar);
+
+//        textfieldAlamat.getDocument().addDocumentListener(new DocumentListener() {
+//            public void inputName(DocumentEvent e){
+//                System.out.println("");
+//            }
+//            
+//        });
+        
 //        cek tagihan
         JButton hapus = new JButton("Cek Tagihan");
-        hapus.setBounds(350,345,150,25);
+        hapus.setBounds(350,385,150,25);
         hapus.setBackground(green);
         frame.add(hapus);
         hapus.addActionListener(new ActionListener(){
@@ -134,8 +154,8 @@ public class Tagihan_Pasien {
 
 //        back      
         JButton back = new JButton("Back");
-        back.setBounds(350,385,150,25);
-        back.setBackground(red);
+        back.setBounds(350,425,150,25);
+        back.setBackground(red);    
         frame.add(back);
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
@@ -209,9 +229,29 @@ public class Tagihan_Pasien {
         alamatPasien.setBackground(Color.WHITE);
         frame.add(alamatPasien);
         
+        //        Tanggal Keluar
+// * date
+        JLabel keluar = new JLabel();
+        keluar.setText("Tanggal Keluar\t:");
+        keluar.setBounds(15,345,175,25);
+        keluar.setVisible(true);
+        frame.add(keluar);
+        
+        JTextField textfieldKeluar = new JTextField();
+        textfieldKeluar.setBounds(205, 345, 300, 25);
+        textfieldKeluar.setBackground(Color.WHITE);
+        frame.add(textfieldKeluar);
+
+//        textfieldAlamat.getDocument().addDocumentListener(new DocumentListener() {
+//            public void inputName(DocumentEvent e){
+//                System.out.println("");
+//            }
+//            
+//        });
+        
 //        cek tagihan
         JButton hapus = new JButton("Cek Tagihan");
-        hapus.setBounds(350,345,150,25);
+        hapus.setBounds(350,385,150,25);
         hapus.setBackground(green);
         frame.add(hapus);
         hapus.addActionListener(new ActionListener(){
@@ -223,8 +263,8 @@ public class Tagihan_Pasien {
 
 //        back      
         JButton back = new JButton("Back");
-        back.setBounds(350,385,150,25);
-        back.setBackground(red);
+        back.setBounds(350,425,150,25);
+        back.setBackground(red);    
         frame.add(back);
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
@@ -254,8 +294,8 @@ public class Tagihan_Pasien {
         JLabel alamatPasien = new JLabel("alamat"/*dari database*/);
         alamatPasien.setBounds(15, 115, 495, 50);
         alamatPasien.setBackground(Color.WHITE);
-        frame.add(alamatPasien);
-        
+        frame.add(alamatPasien); 
+       
 //        tagihan
         JLabel tagihan = new JLabel("Tagihan" /*dari database */);
         tagihan.setBounds(15, 165, 495, 150);

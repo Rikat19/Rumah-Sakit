@@ -16,10 +16,10 @@ import javax.swing.event.DocumentListener;
  *
  * @author Richard
  */
-public class Hapus_Pasien {
+public class Edit_Pasien {
     
-    public Hapus_Pasien(){
-        JFrame frame = new JFrame("Hapus Riwayat Pasien");
+    public Edit_Pasien(){
+        JFrame frame = new JFrame("Edit Riwayat Pasien");
         frame.setSize(550,550);
         frame.setLocationRelativeTo(null);
         
@@ -119,13 +119,13 @@ public class Hapus_Pasien {
         frame.add(alamatPasien);
         
 //        Hapus      
-        JButton hapus = new JButton("Hapus");
+        JButton hapus = new JButton("Edit");
         hapus.setBounds(350,345,150,25);
         hapus.setBackground(green);
         frame.add(hapus);
         hapus.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            // hapus database
+            new Tambah_Pasien();
         }
         });
 
@@ -178,7 +178,7 @@ public class Hapus_Pasien {
         frame.add(cariBio);
         cariBio.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Hapus_Pasien();
+            new Edit_Pasien();
             frame.hide();
         }
         });
@@ -209,13 +209,13 @@ public class Hapus_Pasien {
         frame.add(alamatPasien);
         
 //        Hapus      
-        JButton hapus = new JButton("Hapus");
+        JButton hapus = new JButton("Edit");
         hapus.setBounds(350,330,150,25);
         hapus.setBackground(green);
         frame.add(hapus);
         hapus.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            // hapus database
+            new Tambah_Pasien();
         }
         });
 
@@ -237,6 +237,6 @@ public class Hapus_Pasien {
 }
     
     public static void main(String[] args) {
-        new Hapus_Pasien();
+        new Edit_Pasien();
     }
 }

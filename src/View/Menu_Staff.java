@@ -20,19 +20,19 @@ public class Menu_Staff {
         frame.setLocationRelativeTo(null);
         
         // edit pasien
-        JLabel editPasien = new JLabel();
-        editPasien.setText("Edit Pasien\n");
-        editPasien.setBounds(15,10,175,25);
-        editPasien.setVisible(true);
+        JLabel Pasien = new JLabel();
+        Pasien.setText("Edit Pasien\n");
+        Pasien.setBounds(15,10,175,25);
+        Pasien.setVisible(true);
         
         JButton lihatPasien = new JButton("Lihat Pasien");
         lihatPasien.setBounds(10,55,150,25);
         JButton tambahPasien = new JButton("Tambah Pasien");
         tambahPasien.setBounds(175,55,150,25);
-        JButton hapusPasien = new JButton("Hapus Pasien");
-        hapusPasien.setBounds(340,55,150,25);
+        JButton editPasien = new JButton("Hapus Pasien");
+        editPasien.setBounds(340,55,150,25);
         
-        frame.add(editPasien);
+        frame.add(Pasien);
         frame.add(lihatPasien);
         lihatPasien.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
@@ -49,10 +49,10 @@ public class Menu_Staff {
         }
         });
         
-        frame.add(hapusPasien);
-        hapusPasien.addActionListener(new ActionListener(){
+        frame.add(editPasien);
+        editPasien.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Hapus_Pasien();
+            new Edit_Pasien();
             frame.hide();
         }
         });
@@ -66,8 +66,10 @@ public class Menu_Staff {
         
         JButton lihatStorage = new JButton("Lihat Storage");
         lihatStorage.setBounds(10,135,150,25);
-        JButton tambahStorage = new JButton("Tambah Storage");
-        tambahStorage.setBounds(175,135,150,25);
+        JButton tambahALat = new JButton("Tambah Alat");
+        tambahALat.setBounds(175,135,75,25);
+        JButton tambahObat = new JButton("Tambah Obat");
+        tambahObat.setBounds(250,135,75,25);
         JButton hapusStorage = new JButton("Hapus Storage");
         hapusStorage.setBounds(340,135,150,25);
         
@@ -80,10 +82,17 @@ public class Menu_Staff {
         }
         });
         
-        frame.add(tambahStorage);
-        tambahStorage.addActionListener(new ActionListener(){
+        frame.add(tambahALat);
+        tambahALat.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Tambah_Data_Storage();
+            new Tambah_Alat();
+            frame.hide();
+        }
+        });
+        frame.add(tambahObat);
+        tambahObat.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Tambah_Obat();
             frame.hide();
         }
         });
