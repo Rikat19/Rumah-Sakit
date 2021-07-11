@@ -88,10 +88,26 @@ public class ControlDokter {
         return list;
     }
     
-    public Dokter cariDokterDariId(int id){
+    int cariIdDokterDariIdPerson(int idPerson){
+        int x = 0;
+        conn.connect();
+        String query = "SELECT IDDokter FROM Dokter WHERE IDPerson = " + idPerson;
+        try{
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                x = rs.getInt("IDDokter");
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return x;
+    }
+    
+    public Dokter cariDokterDariIdDokter(int idDokter){
         Dokter subject = new Dokter();
         conn.connect();
-        String query = "SELECT * FROM Dokter WHERE IDDokter = " + id;
+        String query = "SELECT * FROM Dokter WHERE IDDokter = " + idDokter;
         try{
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);

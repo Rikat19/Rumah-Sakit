@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Perawatan{
     private String nama;
     Dokter dokter;
-    public ArrayList<Alat> alat;
-    public ArrayList<Obat> obat;
+    public ArrayList<Integer> idAlat;
+    public ArrayList<Integer> idObat;
 
     public String getNama() {
         return nama;
