@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package View;
 
 import java.awt.Color;
 import static java.awt.Color.green;
@@ -23,9 +23,9 @@ import javax.swing.event.DocumentListener;
  * @author Devan
  */
 public class Hapus_Staff {
-    
-    public Hapus_Staff(){
-        JFrame frame = new JFrame("Hapus Staff");
+
+    public Hapus_Staff() {
+    JFrame frame = new JFrame("Hapus Staff");
         frame.setSize(550,550);
         frame.setLocationRelativeTo(null);
         
@@ -110,15 +110,15 @@ public class Hapus_Staff {
         });
         
         // result box
-        JLabel namaPasien = new JLabel("nama"/*dari database*/);
+        JLabel namaPasien = new JLabel("Nama"/*dari database*/);
         namaPasien.setBounds(15, 180, 495, 50);
         namaPasien.setBackground(Color.WHITE);
         frame.add(namaPasien);
-        JLabel cabangKerja = new JLabel("cabangkerja"/*dari database*/);
+        JLabel cabangKerja = new JLabel("Cabangkerja"/*dari database*/);
         cabangKerja.setBounds(15, 230, 495, 50);
         cabangKerja.setBackground(Color.WHITE);
         frame.add(cabangKerja);
-        JLabel tugasStaff = new JLabel("tugas staff"/*dari database*/);
+        JLabel tugasStaff = new JLabel("Tugas staff"/*dari database*/);
         tugasStaff.setBounds(15, 280, 495, 50);
         tugasStaff.setBackground(Color.WHITE);
         frame.add(tugasStaff);
@@ -142,7 +142,7 @@ public class Hapus_Staff {
         frame.add(back);
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new menuadmin();
+            new Menu_Admin();
         }
         });
         
@@ -186,15 +186,15 @@ public class Hapus_Staff {
         });
         
          // result box
-        JLabel namaPasien = new JLabel("nama"/*dari database*/);
+        JLabel namaPasien = new JLabel("Nama"/*dari database*/);
         namaPasien.setBounds(15, 180, 495, 50);
         namaPasien.setBackground(Color.WHITE);
         frame.add(namaPasien);
-        JLabel cabangKerja = new JLabel("cabang kerja"/*dari database*/);
+        JLabel cabangKerja = new JLabel("Cabang kerja"/*dari database*/);
         cabangKerja.setBounds(15, 230, 495, 50);
         cabangKerja.setBackground(Color.WHITE);
         frame.add(cabangKerja);
-        JLabel tugasStaff = new JLabel("tugas staff"/*dari database*/);
+        JLabel tugasStaff = new JLabel("Tugas staff"/*dari database*/);
         tugasStaff.setBounds(15, 280, 495, 50);
         tugasStaff.setBackground(Color.WHITE);
         frame.add(tugasStaff);
@@ -207,7 +207,7 @@ public class Hapus_Staff {
         frame.add(back);
         back.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new menuadmin();
+            new Menu_Admin();
         }
         });
         

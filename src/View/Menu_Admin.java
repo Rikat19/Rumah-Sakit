@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package View;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -11,14 +11,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 /**
  *
  * @author Devan
  */
-public class menuadmin {
+public class Menu_Admin {
     
-    public menuadmin (){
+     public Menu_Admin (){
         JFrame frame = new JFrame("Menu Admin");
         frame.setSize(650,550);
         frame.setLocationRelativeTo(null);
@@ -33,31 +32,22 @@ public class menuadmin {
         lihatCabang.setBounds(10,55,150,25);
         JButton tambahCabang = new JButton("Tambah Cabang");
         tambahCabang.setBounds(175,55,150,25);
-        JButton hapusCabang = new JButton("Hapus Cabang");
-        hapusCabang.setBounds(340,55,150,25);
         
         frame.add(editCabang);
         frame.add(lihatCabang);
         lihatCabang.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-        //    new Lihat_Cabang();
+           new Lihat_Cabang();
         }
         });
         
         frame.add(tambahCabang);
         tambahCabang.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-        //    new Tambah_Cabang();
+          new Tambah_Cabang();
         }
         });
-        
-        frame.add(hapusCabang);
-        hapusCabang.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-        //    new Hapus_Cabang();
-        }
-        });
-        
+           
         // edit staff
         JLabel editStaff = new JLabel();
         editStaff.setText("Edit Staff\n");
@@ -89,7 +79,7 @@ public class menuadmin {
         frame.add(hapusStaff);
         hapusStaff.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Hapus_Staff();
+           new Hapus_Staff();
         }
         });
         
@@ -108,18 +98,11 @@ public class menuadmin {
         frame.add(lihatPenghasilanTotal);
         lihatPenghasilanTotal.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Lihat_Penghasilan_Total();
+           new Lihat_Penghasilan_Total();
         }
         });
-        
-        frame.add(lihatPenghasilanPerCabang);
-        lihatPenghasilanPerCabang.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            new Lihat_Penghasilan_Per_Cabang();
-        }
-        });
-        
-        // beban gaji
+          
+         // beban gaji
         JLabel bebanGaji = new JLabel();
         bebanGaji.setText("Beban Gaji\n");
         bebanGaji.setBounds(15,255,175,25);
@@ -134,7 +117,7 @@ public class menuadmin {
         frame.add(lihatBebanGajiTotal);
         lihatBebanGajiTotal.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-           new Lihat_Beban_Gaji_Total();
+            new Lihat_Beban_Gaji_Total();
         }
         });
         
@@ -153,7 +136,7 @@ public class menuadmin {
         frame.add(logout);
         logout.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Logout();
+        //    new Logout();
         }
         });
         
@@ -162,6 +145,6 @@ public class menuadmin {
     }
         
         public static void main(String[] args) {
-        new menuadmin();
+        new Menu_Admin();
     }
 }
