@@ -26,9 +26,5 @@ public class TUBES_RumahSakit {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ControlPasien cp = new ControlPasien();
-        ControlDokter cd = new ControlDokter();
-        Pasien p = cp.getPasienDariId(1);
-        cp.insertPerawatanKePasien(p, p.perawatan.get(0));
     }
 }
