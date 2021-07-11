@@ -16,6 +16,7 @@ public class Person {
     private LocalDate tanggalLahir;
     private String gender;
     private String alamat;
+    private int id;
 
     @Override
     public String toString() {
@@ -28,6 +29,14 @@ public class Person {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public LocalDate getTanggalLahir() {

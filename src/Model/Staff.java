@@ -14,8 +14,19 @@ import java.time.LocalDate;
 public class Staff extends Person{
     private String tugas;
     private int[] shift;
+    private int idCabang;
     int gaji;
     private LocalDate tanggalKerja;
+
+    public int getIdCabang() {
+        return idCabang;
+    }
+
+    public void setIdCabang(int idCabang) {
+        this.idCabang = idCabang;
+    }
+    
+    
 
     public String getTugas() {
         return tugas;

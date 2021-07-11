@@ -13,6 +13,23 @@ public class Item {
     private String nama;
     private int stock;
     private int harga;
+    private int idCabang;
+
+    public int getIdCabang() {
+        return idCabang;
+    }
+
+    public void setIdCabang(int idCabang) {
+        this.idCabang = idCabang;
+    }
+
+    public int getHarga() {
+        return harga;
+    }
+
+    public void setHarga(int harga) {
+        this.harga = harga;
+    }
 
     public String getNama() {
         return nama;
@@ -29,13 +46,4 @@ public class Item {
     public void setStock(int stock) {
         this.stock = stock;
     }
-
-    public int getHarga() {
-        return harga;
-    }
-
-    public void setHarga(int harga) {
-        this.harga = harga;
-    }
-    
 }
