@@ -5,20 +5,26 @@
  */
 package Main;
 import Controller.Control;
+import Controller.ControlDokter;
 import Controller.ControlPasien;
+import Controller.ControlStaff;
+import Model.Cabang;
+import Model.Dokter;
+import Model.Item;
 import Model.Pasien;
+import Model.Penyakit;
+import Model.Perawatan;
 import Model.Person;
 import java.util.ArrayList;
+import java.util.LinkedList;
 /**
  *
  * @author Richard
  */
 public class TUBES_RumahSakit {
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
     }
-    
 }
