@@ -71,7 +71,8 @@ public class ControlPasien {
         return list;
     }
     
-    public int[] getIsiKamar(ArrayList<Pasien> subject){
+    public int[] getIsiKamar(int idCabang){
+        ArrayList<Pasien> subject = getPasienByCabang(idCabang);
         int[] isi = new int[9];
         for (int i = 0; i < subject.size(); i++) {
             if(null != subject.get(i).getDaerahPerawatan())switch (subject.get(i).getDaerahPerawatan()) {
@@ -111,12 +112,66 @@ public class ControlPasien {
     
     public void insertPasien(Pasien subject){
         c.insertPerson(subject);
-        conn.connect();;
+        conn.connect();
         String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() +"," + subject.getIdCabang() + ",'" + subject.getTanggalMasuk().toString() + "','" + subject.getTanggalKeluar().toString() + "','" + subject.isDibayar() + "');";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);
             
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void insertPenyakitKePasien(Pasien pasien,Penyakit penyakit){
+        conn.connect();
+        String query = "INSERT INTO penyakit (Nama, Lethality, Infectious) VALUES ('" + penyakit.getNama() +"'," + penyakit.getLethality() + "," + penyakit.getInfectious() + ");";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //pending insert relasi
+        buatRelasiPenyaPasi(cariIdPasien(pasien),getIdPenyakitTerbaru());
+    }
+    private int getIdPenyakitTerbaru(){
+        conn.connect();
+        int id = 0;
+        String query = "SELECT IDPenyakit FROM penyakit ORDER BY IDPenyakit DESC LIMIT 1";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                id = rs.getInt("IDPenyakit");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    };
+    private int cariIdPasien(Pasien pasien){
+        conn.connect();
+        int id = 0;
+        String query = "SELECT IDPasien FROM Pasien WHERE IDPerson = " + pasien.getId();
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                id = rs.getInt("IDPasien");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+    
+    private void buatRelasiPenyaPasi(int idPasien,int idPenyakit){
+        conn.connect();
+        String query = "INSERT INTO relasipenyapasi (IDPasien, IDPenyakit) VALUES (" + idPasien +"," + idPenyakit + ");";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -128,7 +183,6 @@ public class ControlPasien {
         String query = "SELECT * FROM Pasien WHERE IDPasien = " + id;
         try {
             Statement stmt = conn.con.createStatement();
-            Statement stmtPerson = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Pasien user = new Pasien();

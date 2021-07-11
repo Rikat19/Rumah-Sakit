@@ -12,6 +12,7 @@ import Model.Cabang;
 import Model.Dokter;
 import Model.Item;
 import Model.Pasien;
+import Model.Penyakit;
 import Model.Person;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -24,6 +25,13 @@ public class TUBES_RumahSakit {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Control c = new Control();
+        ControlPasien cp = new ControlPasien();
+        
+        ArrayList<Pasien> list = cp.getAllPasien();
+        Penyakit p = new Penyakit();
+        p.setNama("korona");
+        p.setInfectious(10);
+        p.setLethality(10);
+        cp.insertPenyakitKePasien(list.get(0), p);
     }
 }

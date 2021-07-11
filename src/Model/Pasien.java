@@ -62,6 +62,7 @@ public class Pasien extends Person implements InterfaceConstantDaerah {
     public void setTanggalKeluar(LocalDate tanggalKeluar) {
         this.tanggalKeluar = tanggalKeluar;
     }
-    
-    
+    public static class Builder{
+        
+    }
 }

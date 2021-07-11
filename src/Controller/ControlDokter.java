@@ -99,7 +99,7 @@ public class ControlDokter {
                 c.cariPersonDariId(subject, rs.getString("IDPerson"));
                 subject.setBiayaJasa(rs.getInt("BiayaJasa"));
                 subject.setSpecialist(rs.getString("Specialist"));
-                subject.setJadwal(parseJadwalToInt(rs.getString("JadwalPraktek")));
+                subject.setJadwal(parseJadwalToInt(rs.getString("JamPraktek")));
             }
         }catch (SQLException e) {
             e.printStackTrace();
