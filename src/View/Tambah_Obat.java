@@ -86,7 +86,7 @@ public class Tambah_Obat{
 
 //        Alamat Pasien
         JLabel dosis = new JLabel();
-        dosis.setText("Kondisi\t:");
+        dosis.setText("dosis\t:");
         dosis.setBounds(15,135,175,25);
         dosis.setVisible(true);
         frame.add(dosis);
