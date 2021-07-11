@@ -47,7 +47,7 @@ public class ControlDokter {
         String[] strArray = x.split(",");
         int[][] hasil = new int[7][4];
         int y = 0;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 7; j++,y++) {
                 hasil[j][i] = Integer.parseInt(strArray[y]);
             }
@@ -57,7 +57,7 @@ public class ControlDokter {
     
     public String parseJadwalToString(int[][] x){
         String y = "";
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 7; j++) {
                 y += x[j][i] + ",";
             }
@@ -76,6 +76,16 @@ public class ControlDokter {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public ArrayList<Dokter> getDokterByJadwal(int hari,int jam){
+        ArrayList<Dokter> list = getAllDokter();
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).getJadwal()[hari][0] > jam || list.get(i).getJadwal()[hari][1] < jam){
+                list.remove(i);
+            }
+        }
+        return list;
     }
     
     public Dokter cariDokterDariId(int id){

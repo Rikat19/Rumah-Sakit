@@ -10,6 +10,7 @@ import Controller.ControlPasien;
 import Controller.ControlStaff;
 import Model.Cabang;
 import Model.Dokter;
+import Model.Item;
 import Model.Pasien;
 import Model.Person;
 import java.util.ArrayList;
@@ -23,6 +24,6 @@ public class TUBES_RumahSakit {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ControlDokter c = new ControlDokter();
+        Control c = new Control();
     }
 }

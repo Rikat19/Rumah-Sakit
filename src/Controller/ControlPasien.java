@@ -61,6 +61,54 @@ public class ControlPasien {
         return (pasien);
     }
     
+    public ArrayList<Pasien> getPasienByCabang(int idCabang){
+        ArrayList<Pasien> list = getAllPasien();
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).getIdCabang() != idCabang){
+                list.remove(i);
+            }
+        }
+        return list;
+    }
+    
+    public int[] getIsiKamar(ArrayList<Pasien> subject){
+        int[] isi = new int[9];
+        for (int i = 0; i < subject.size(); i++) {
+            if(null != subject.get(i).getDaerahPerawatan())switch (subject.get(i).getDaerahPerawatan()) {
+                case "VVIP":
+                    isi[0]++;
+                    break;
+                case "VIP":
+                    isi[1]++;
+                    break;
+                case "I":
+                    isi[2]++;
+                    break;
+                case "II":
+                    isi[3]++;
+                    break;
+                case "III":
+                    isi[4]++;
+                    break;
+                case "UGD":
+                    isi[5]++;
+                    break;
+                case "ICU":
+                    isi[6]++;
+                    break;
+                case "KARANTINA":
+                    isi[7]++;
+                    break;
+                case "ANAK":
+                    isi[8]++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        return isi;
+    }
+    
     public void insertPasien(Pasien subject){
         c.insertPerson(subject);
         conn.connect();;

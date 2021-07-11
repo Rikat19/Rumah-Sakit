@@ -20,7 +20,7 @@ public class Pasien extends Person implements InterfaceConstantDaerah {
     private boolean dibayar;
     public LinkedList<Penyakit> penyakit;
     public LinkedList<Perawatan> perawatan;
-
+    
     public int getIdCabang() {
         return idCabang;
     }
