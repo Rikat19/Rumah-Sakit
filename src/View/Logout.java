@@ -1,6 +1,7 @@
 
 package View;
 
+import Model.Cabang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,11 +36,11 @@ public class Logout {
         tidak.setBounds(175, 80, 100, 25);
         Color red = new Color(250, 0, 0);
         tidak.setBackground(red);
-        
         frame.add(ya);
         frame.add(tidak);
         ya.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Cabang.setInstance(null);
                 new Login();
                 frame.hide();
             }
@@ -50,7 +51,6 @@ public class Logout {
                 frame.hide();
             }
         });
-        
         frame.setLayout(null);
         frame.setVisible(true);
     }

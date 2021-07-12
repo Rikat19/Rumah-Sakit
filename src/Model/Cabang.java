@@ -23,6 +23,17 @@ public class Cabang {
     public ArrayList<Dokter> dokter;
     private String kapasitasDaerah;
     public ArrayList<Pasien> pasien;
+    private static Cabang instance = null;
+
+    public static void setInstance(Cabang instance) {
+        Cabang.instance = instance;
+    }
+    public static void resetInstance(){
+        Cabang.instance = null;
+    }
+    public static Cabang getInstance(){
+        return instance;
+    }
 
     public int getId() {
         return id;

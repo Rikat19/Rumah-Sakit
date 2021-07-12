@@ -1,9 +1,12 @@
 
 package View;
 
+import Controller.Control;
+import Model.Cabang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +20,7 @@ import javax.swing.JTextField;
 public class Login {
        
     public Login() {
+        Control c = new Control();
         JFrame frame = new JFrame("Login");
         frame.setSize(350,250);
         frame.setLocationRelativeTo(null);
@@ -60,8 +64,16 @@ public class Login {
 //                new Menu_Admin();
 //            frame.hide();
                 // if staff
-                new Menu_Staff();
-                frame.hide();
+                LinkedList<Cabang> listCabang = c.getAllCabang();
+                for (int i = 0; i < listCabang.size(); i++) {
+                    if(listCabang.get(i).getUsername().equals(textfieldID.getText()) && listCabang.get(i).getPassword().equals(textfieldPass.getText())){
+                        Cabang.setInstance(listCabang.get(0));
+                    }
+                }
+                if(Cabang.getInstance() != null && Cabang.getInstance().getId() > 0){
+                    new Menu_Staff();
+                    frame.hide();
+                }
             }
         });
         

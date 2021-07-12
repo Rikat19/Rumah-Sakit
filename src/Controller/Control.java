@@ -105,6 +105,23 @@ public class Control {
         }
     }
     
+    public int[] parseDaerahToInt(String x){
+        x = x.trim();
+        String[] strArray = x.split(",");
+        int[] hasil = new int[strArray.length];
+        for (int i = 0; i < strArray.length; i++) {
+            hasil[i] = Integer.parseInt(strArray[i]);
+        }
+        return hasil;
+    }
+    public String parseDaerahToString(int[] x){
+        String y = "";
+        for (int i = 0; i < x.length; i++) {
+            y += x[i] + ",";
+        }
+        return y;
+    }
+    
     int getIdItem(){
         int x = 0;
         conn.connect();
