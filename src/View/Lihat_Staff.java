@@ -40,9 +40,13 @@ public class Lihat_Staff {
              { "ID", "Nama", "Cabang", "Tugas", "ShiftKerja", "Gaji/Bulan", /*1*/},
          };
         
-        //JTable table = new JTable(data, tabel);
-        //table.setBounds(15, 50, 600, 300);
-        //frame.add(table);
+         String[] tabel =
+        { "ID", "Nama", "Cabang", "Tugas", "ShiftKerja", "Gaji/Bulan"};
+        
+        
+        JTable table = new JTable(data, tabel);
+        table.setBounds(15, 50, 600, 300);
+        frame.add(table);
         
           //back      
         JButton back = new JButton("Back");
