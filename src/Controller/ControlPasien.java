@@ -14,6 +14,7 @@ import Model.Perawatan;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -52,7 +53,11 @@ public class ControlPasien {
 
                 user.setDaerahPerawatan(rs.getString("Daerah"));
                 user.setTanggalMasuk(rs.getDate("TglMasuk").toLocalDate());
-                user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
+                try{
+                    user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
+                }catch(Exception e){
+                    user.setTanggalKeluar(LocalDate.MIN);
+                }
                 user.setIdCabang(rs.getInt("IDCabang"));
                 pasien.add(user);
             }
@@ -116,7 +121,7 @@ public class ControlPasien {
     public void insertPasien(Pasien subject) {
         c.insertPerson(subject);
         conn.connect();
-        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() + "," + subject.getIdCabang() + ",'" + subject.getTanggalMasuk().toString() + "','" + subject.getTanggalKeluar().toString() + "','" + subject.isDibayar() + "');";
+        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() + "," + subject.getIdCabang() + ",'" + subject.getTanggalMasuk().toString() + "','" + "0000-00-00" + "','" + subject.isDibayar() + "');";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);
