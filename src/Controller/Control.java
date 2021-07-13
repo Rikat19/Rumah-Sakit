@@ -195,7 +195,7 @@ public class Control {
         return list;
     }
 
-    LinkedList<Item> getItemDariIdCabang(int id) {
+    public LinkedList<Item> getItemDariIdCabang(int id) {
         LinkedList<Item> list = getAllItem();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getIdCabang() != id) {

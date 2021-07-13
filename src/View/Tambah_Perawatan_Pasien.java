@@ -1,9 +1,15 @@
 
 package View;
 
+import Controller.Control;
+import Controller.ControlDokter;
+import Controller.ControlPasien;
+import Model.Pasien;
+import Model.Perawatan;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +23,9 @@ import javax.swing.event.DocumentListener;
  * @author Richard
  */
 public class Tambah_Perawatan_Pasien{
+    Control c = new Control();
+    ControlPasien cp = new ControlPasien();
+    ControlDokter cd = new ControlDokter();
     
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
@@ -162,6 +171,26 @@ public class Tambah_Perawatan_Pasien{
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
+            Perawatan p = new Perawatan();
+            
+            String[] obat = textfieldObat.getText().split(",");
+            String[] alat = textfieldAlat.getText().split(",");
+            for (int i = 0; i < obat.length; i++) {
+                p.idObat = new ArrayList();
+                p.idObat.add(Integer.valueOf(obat[i]));
+            }
+            for (int i = 0; i < alat.length; i++) {
+                p.idAlat = new ArrayList();
+                p.idAlat.add(Integer.valueOf(alat[i]));
+            }
+            p.setDokter(cd.cariDokterDariIdDokter(Integer.valueOf(textfieldDokter.getText())));
+            p.setNama(textfieldPerawatan.getText());
+            
+            Pasien pasien = cp.getPasienDariId(Integer.valueOf(textfieldId.getText()));
+            cp.insertPerawatanKePasien(pasien, p);
+            
+            new Menu_Staff();
+            frame.hide();
             // cari
         }
         });
