@@ -1,6 +1,9 @@
 
 package View;
 
+import Controller.ControlPasien;
+import Model.Pasien;
+import Model.Penyakit;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +20,7 @@ import javax.swing.event.DocumentListener;
  * @author Richard
  */
 public class Tambah_Penyakit_Pasien{
+    ControlPasien cp = new ControlPasien();
     
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
@@ -46,16 +50,16 @@ public class Tambah_Penyakit_Pasien{
 //        });
 
 //        TTL Pasien
-        JLabel nama = new JLabel();
-        nama.setText("Nama Pasien\t:");
-        nama.setBounds(15,55,175,25);
-        nama.setVisible(true);
-        frame.add(nama);
-        
-        JTextField textfieldName = new JTextField();
-        textfieldName.setBounds(210, 55, 300, 25);
-        textfieldName.setBackground(Color.WHITE);
-        frame.add(textfieldName);
+//        JLabel nama = new JLabel();
+//        nama.setText("Nama Pasien\t:");
+//        nama.setBounds(15,55,175,25);
+//        nama.setVisible(true);
+//        frame.add(nama);
+//        
+//        JTextField textfieldName = new JTextField();
+//        textfieldName.setBounds(210, 55, 300, 25);
+//        textfieldName.setBackground(Color.WHITE);
+//        frame.add(textfieldName);
         
 //        textfieldName.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
@@ -129,6 +133,13 @@ public class Tambah_Penyakit_Pasien{
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
+            Pasien p = cp.getPasienDariId(Integer.valueOf(textfieldID.getText()));
+            Penyakit pp = new Penyakit();
+            pp.setNama(textfieldPenyakit.getText());
+            pp.setInfectious(Integer.valueOf(textfieldInfect.getText()));
+            pp.setLethality(Integer.valueOf(textfieldLethal.getText()));
+            
+            cp.insertPenyakitKePasien(p,pp);
             // cari
         }
         });
