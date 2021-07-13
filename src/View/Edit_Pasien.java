@@ -18,9 +18,11 @@ import javax.swing.event.DocumentListener;
  */
 public class Edit_Pasien {
     
+    Color green = new Color(0, 200, 0);
+    
     public Edit_Pasien(){
         JFrame frame = new JFrame("Edit Riwayat Pasien");
-        frame.setSize(550,550);
+        frame.setSize(550,500);
         frame.setLocationRelativeTo(null);
         
 //        Nama Pasien
@@ -39,7 +41,6 @@ public class Edit_Pasien {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
-//            
 //        });
 
 //        TTL Pasien
@@ -58,7 +59,6 @@ public class Edit_Pasien {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
-//            
 //        });
 
 //        Alamat Pasien
@@ -77,23 +77,9 @@ public class Edit_Pasien {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
-//            
 //        });
 
 //        cari
-        JButton cariId = new JButton("Cari dengan ID");
-        cariId.setBounds(210, 140, 140, 25);
-        Color green = new Color(0, 200, 0);
-        cariId.setBackground(green);
-        frame.add(cariId);
-        cariId.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            Hapus_dengan_ID();
-            frame.hide();
-        }
-        });
-        
-//        cari dengan id
         JButton cari = new JButton("Cari");
         cari.setBounds(370, 140, 140, 25);
         cari.setBackground(green);
@@ -104,28 +90,47 @@ public class Edit_Pasien {
         }
         });
         
-        // result box
+//        cari dengan id
+        JButton cariId = new JButton("Cari dengan ID");
+        cariId.setBounds(210, 140, 140, 25);
+        cariId.setBackground(green);
+        frame.add(cariId);
+        cariId.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            Edit_dengan_ID();
+            frame.hide();
+        }
+        });
+        
+//        result box
         JLabel namaPasien = new JLabel("nama"/*dari database*/);
         namaPasien.setBounds(15, 180, 495, 50);
         namaPasien.setBackground(Color.WHITE);
         frame.add(namaPasien);
+        
         JLabel TTLPasien = new JLabel("TTL"/*dari database*/);
         TTLPasien.setBounds(15, 230, 495, 50);
         TTLPasien.setBackground(Color.WHITE);
         frame.add(TTLPasien);
+        
         JLabel alamatPasien = new JLabel("alamat"/*dari database*/);
         alamatPasien.setBounds(15, 280, 495, 50);
         alamatPasien.setBackground(Color.WHITE);
         frame.add(alamatPasien);
         
-//        Hapus      
-        JButton hapus = new JButton("Edit");
-        hapus.setBounds(350,345,150,25);
-        hapus.setBackground(green);
-        frame.add(hapus);
-        hapus.addActionListener(new ActionListener(){
+//        edit      
+        JButton edit = new JButton("Edit");
+        edit.setBounds(350,345,150,25);
+        edit.setBackground(green);
+        frame.add(edit);
+        edit.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Tambah_Pasien();
+            frame.setVisible(false);
+            // bikin frame buat lihat hasil edit pasien
+            // menuju frame menu utama
+            new Menu_Staff();
+            // menuju frame lihat list pasien
+            new Lihat_Pasien();
         }
         });
 
@@ -146,46 +151,32 @@ public class Edit_Pasien {
         frame.setVisible(true);
     }
     
-    public void Hapus_dengan_ID(){
-    JFrame frame = new JFrame("Hapus Riwayat Pasien");
-        frame.setSize(550,550);
+    public void Edit_dengan_ID(){
+        JFrame frame = new JFrame("Edit Riwayat Pasien");
+        frame.setSize(550,420);
         frame.setLocationRelativeTo(null);
         
-//        Nama Pasien
+//        Id Pasien
         JLabel id = new JLabel();
-        id.setText("ID Pasien\t:");
+        id.setText("Nama Pasien\t:");
         id.setBounds(15,15,175,25);
         id.setVisible(true);
         frame.add(id);
         
-        JTextField textfieldID = new JTextField();
-        textfieldID.setBounds(210, 15, 300, 30);
-        textfieldID.setBackground(Color.WHITE);
-        frame.add(textfieldID);
+        JTextField textfieldId = new JTextField();
+        textfieldId.setBounds(210, 15, 300, 25);
+        textfieldId.setBackground(Color.WHITE);
+        frame.add(textfieldId);
         
-//        textfieldName.getDocument().addDocumentListener(new DocumentListener() {
+//        textfieldId.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
-//            
 //        });
 
 //        cari
-        JButton cariBio = new JButton("Cari dengan Nama");
-        cariBio.setBounds(210, 140, 140, 25);
-        Color green = new Color(0, 200, 0);
-        cariBio.setBackground(green);
-        frame.add(cariBio);
-        cariBio.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            new Edit_Pasien();
-            frame.hide();
-        }
-        });
-        
-//        cari dengan id
         JButton cari = new JButton("Cari");
-        cari.setBounds(370, 140, 140, 25);
+        cari.setBounds(370, 60, 140, 25);
         cari.setBackground(green);
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
@@ -194,34 +185,53 @@ public class Edit_Pasien {
         }
         });
         
-        // result box
+//        cari dengan nama
+        JButton cariNama = new JButton("Cari dengan ID");
+        cariNama.setBounds(210, 60, 140, 25);
+        cariNama.setBackground(green);
+        frame.add(cariNama);
+        cariNama.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Edit_Pasien();
+            frame.hide();
+        }
+        });
+        
+//        result box
         JLabel namaPasien = new JLabel("nama"/*dari database*/);
-        namaPasien.setBounds(15, 180, 495, 50);
+        namaPasien.setBounds(15, 100, 495, 50);
         namaPasien.setBackground(Color.WHITE);
         frame.add(namaPasien);
+        
         JLabel TTLPasien = new JLabel("TTL"/*dari database*/);
-        TTLPasien.setBounds(15, 230, 495, 50);
+        TTLPasien.setBounds(15, 150, 495, 50);
         TTLPasien.setBackground(Color.WHITE);
         frame.add(TTLPasien);
+        
         JLabel alamatPasien = new JLabel("alamat"/*dari database*/);
-        alamatPasien.setBounds(15, 280, 495, 50);
+        alamatPasien.setBounds(15, 200, 495, 50);
         alamatPasien.setBackground(Color.WHITE);
         frame.add(alamatPasien);
         
-//        Hapus      
-        JButton hapus = new JButton("Edit");
-        hapus.setBounds(350,330,150,25);
-        hapus.setBackground(green);
-        frame.add(hapus);
-        hapus.addActionListener(new ActionListener(){
+//        edit      
+        JButton edit = new JButton("Edit");
+        edit.setBounds(350,265,150,25);
+        edit.setBackground(green);
+        frame.add(edit);
+        edit.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Tambah_Pasien();
+            frame.setVisible(false);
+            // bikin frame buat lihat hasil edit pasien
+            // menuju frame menu utama
+            new Menu_Staff();
+            // menuju frame lihat list pasien
+            new Lihat_Pasien();
         }
         });
 
 //        back      
         JButton back = new JButton("Back");
-        back.setBounds(350,380,150,25);
+        back.setBounds(350,305,150,25);
         Color red = new Color(250, 0, 0);
         back.setBackground(red);
         frame.add(back);
@@ -234,7 +244,7 @@ public class Edit_Pasien {
         
         frame.setLayout(null);
         frame.setVisible(true);
-}
+    }
     
     public static void main(String[] args) {
         new Edit_Pasien();
