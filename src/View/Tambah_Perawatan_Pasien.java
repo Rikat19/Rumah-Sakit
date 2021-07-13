@@ -109,7 +109,7 @@ public class Tambah_Perawatan_Pasien{
         frame.add(cariAlat);
         cariAlat.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-//            new Lihat_Alat();
+            new Lihat_Alat();
         }
         });
         
@@ -139,7 +139,7 @@ public class Tambah_Perawatan_Pasien{
         frame.add(cariObat);
         cariObat.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-//            new Lihat_Obat();
+            new Lihat_Obat();
         }
         });
         
