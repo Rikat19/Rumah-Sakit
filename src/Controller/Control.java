@@ -63,6 +63,24 @@ public class Control {
         }
     }
 
+    public static void main(String[] args) {
+        
+    }
+    int getIdPerson() {
+        conn.connect();
+        String query = "SELECT IDPerson FROM Person ORDER BY IDPerson DESC LIMIT 1;";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                return rs.getInt("IDPerson");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public void insertPerson(Person subject) {
         conn.connect();
         String query = "INSERT INTO person (Nama, TglLahir, Gender, Alamat) VALUES ('" + subject.getNama() + "','" + subject.getTanggalLahir().toString() + "','" + subject.getGender() + "','" + subject.getAlamat() + "');";
@@ -86,16 +104,16 @@ public class Control {
         int id = getIdItem();
         if (item instanceof Obat) {
             Obat obat = (Obat) item;
-            query = "INSERT INTO Obat (IDItem, Dosis) VALUES(" + id + ",'" +  obat.getDosis() + "');";
+            query = "INSERT INTO Obat (IDItem, Dosis) VALUES(" + id + ",'" + obat.getDosis() + "');";
             try {
                 Statement stmt = conn.con.createStatement();
                 stmt.executeUpdate(query);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
             Alat alat = (Alat) item;
-            query = "INSERT INTO Alat (IDItem, Jenis,kondisi) VALUES(" + id + ",'" +  alat.getJenisAlat() + "'," + alat.isKondisi() + ");";
+            query = "INSERT INTO Alat (IDItem, Jenis,kondisi) VALUES(" + id + ",'" + alat.getJenisAlat() + "'," + alat.isKondisi() + ");";
             try {
                 Statement stmt = conn.con.createStatement();
                 stmt.executeUpdate(query);
@@ -104,8 +122,8 @@ public class Control {
             }
         }
     }
-    
-    public int[] parseDaerahToInt(String x){
+
+    public int[] parseDaerahToInt(String x) {
         x = x.trim();
         String[] strArray = x.split(",");
         int[] hasil = new int[strArray.length];
@@ -114,15 +132,16 @@ public class Control {
         }
         return hasil;
     }
-    public String parseDaerahToString(int[] x){
+
+    public String parseDaerahToString(int[] x) {
         String y = "";
         for (int i = 0; i < x.length; i++) {
             y += x[i] + ",";
         }
         return y;
     }
-    
-    int getIdItem(){
+
+    int getIdItem() {
         int x = 0;
         conn.connect();
         String query = "SELECT IDItem FROM Item ORDER BY IDItem DESC LIMIT 1";
@@ -229,14 +248,14 @@ public class Control {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Item item;
-                if(isObat(rs.getInt("IDItem"))){
+                if (isObat(rs.getInt("IDItem"))) {
                     item = new Obat();
                     PolioToObat(item, rs.getInt("IDItem"));
-                }else{
+                } else {
                     item = new Alat();
-                    item = polioToAlat(item,rs.getInt("IDItem"));
+                    item = polioToAlat(item, rs.getInt("IDItem"));
                 }
-                
+
                 item.setNama(rs.getString("Nama"));
                 item.setStock(rs.getInt("Stok"));
                 item.setHarga(rs.getInt("Harga"));
@@ -249,14 +268,15 @@ public class Control {
         }
         return list;
     }
-    boolean isObat(int idItem){
+
+    boolean isObat(int idItem) {
         conn.connect();
         String query = "SELECT IDItem FROM Obat";
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                if(idItem == rs.getInt("IDItem")){
+                if (idItem == rs.getInt("IDItem")) {
                     return true;
                 }
             }

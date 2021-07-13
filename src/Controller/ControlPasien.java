@@ -117,11 +117,14 @@ public class ControlPasien {
         }
         return isi;
     }
-
+    public static void main(String[] args) {
+        
+    }
     public void insertPasien(Pasien subject) {
         c.insertPerson(subject);
+        subject.setId(c.getIdPerson());
         conn.connect();
-        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() + "," + subject.getIdCabang() + ",'" + subject.getTanggalMasuk().toString() + "','" + "0000-00-00" + "','" + subject.isDibayar() + "');";
+        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() + ","+ subject.getIdCabang() + ",'" + subject.getDaerahPerawatan() + "','" + subject.getTanggalMasuk().toString() + "'," + null + "," + subject.isDibayar() + ");";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);
