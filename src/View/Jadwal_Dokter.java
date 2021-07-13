@@ -1,13 +1,18 @@
 
 package View;
 
+import Controller.ControlDokter;
+import Model.Dokter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -20,6 +25,7 @@ import javax.swing.event.DocumentListener;
 public class Jadwal_Dokter {
     
     public Jadwal_Dokter(){
+        ControlDokter cd = new ControlDokter();
         JFrame frame = new JFrame("Lihat Jadwal Dokter");
         frame.setSize(550,200);
         frame.setLocationRelativeTo(null);
@@ -51,7 +57,18 @@ public class Jadwal_Dokter {
         frame.add(cariId);
         cariId.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Lihat_Dokter();
+            boolean get = true;
+            LocalDate x = LocalDate.MIN;
+            try{
+                x = LocalDate.parse(textfieldDate.getText());
+            }catch(Exception ec){
+                JOptionPane.showMessageDialog(null, "Format input salah... ini seharusnya pakai date input library.\n tapi sesuatu terjadi dan kita harus improv");
+                get = false;
+            }
+            if(get == true){
+                ArrayList<Dokter> list = cd.getDokterByJadwal(x.getDayOfWeek().getValue() - 1);
+                new Lihat_Dokter(list,x.getDayOfWeek().getValue() - 1);
+            }
             frame.hide();
         }
         });
