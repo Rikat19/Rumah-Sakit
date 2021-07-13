@@ -26,7 +26,7 @@ public class Menu_Staff {
         frame.add(Pasien);
 
         JButton lihatPasien = new JButton("Lihat Pasien");
-        lihatPasien.setBounds(10, 45, 150, 25);
+        lihatPasien.setBounds(10, 45, 125, 25);
         frame.add(lihatPasien);
 
         lihatPasien.addActionListener(new ActionListener() {
@@ -36,12 +36,23 @@ public class Menu_Staff {
         });
 
         JButton tambahPasien = new JButton("Tambah Pasien");
-        tambahPasien.setBounds(175, 45, 150, 25);
+        tambahPasien.setBounds(150, 45, 125, 25);
         frame.add(tambahPasien);
 
         tambahPasien.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new Tambah_Pasien();
+                frame.hide();
+            }
+        });
+
+        JButton editPasien = new JButton("Edit Pasien");
+        editPasien.setBounds(290, 45, 125, 25);
+        frame.add(editPasien);
+
+        editPasien.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Edit_Pasien();
                 frame.hide();
             }
         });
