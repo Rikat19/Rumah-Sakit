@@ -29,8 +29,10 @@ public class Menu_Staff {
         lihatPasien.setBounds(10,55,150,25);
         JButton tambahPasien = new JButton("Tambah Pasien");
         tambahPasien.setBounds(175,55,150,25);
-        JButton editPasien = new JButton("Hapus Pasien");
-        editPasien.setBounds(340,55,150,25);
+        JButton tambahPenyakit = new JButton("Tambah Penyakit Pasien");
+        tambahPenyakit.setBounds(340,55,75,25);
+        JButton tambahPerawatan = new JButton("Tambah Perawatan Pasien");
+        tambahPerawatan.setBounds(415,55,75,25);
         
         frame.add(Pasien);
         frame.add(lihatPasien);
@@ -49,10 +51,18 @@ public class Menu_Staff {
         }
         });
         
-        frame.add(editPasien);
-        editPasien.addActionListener(new ActionListener(){
+        frame.add(tambahPenyakit);
+        tambahPenyakit.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Edit_Pasien();
+            new Tambah_Penyakit_Pasien();
+            frame.hide();
+        }
+        });
+        
+        frame.add(tambahPerawatan);
+        tambahPerawatan.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            new Tambah_Perawatan_Pasien();
             frame.hide();
         }
         });
@@ -64,13 +74,13 @@ public class Menu_Staff {
         editStorage.setBounds(15,95,175,25);
         editStorage.setVisible(true);
         
-        JButton lihatStorage = new JButton("Lihat Storage");
+        JButton lihatStorage = new JButton("Lihat Items");
         lihatStorage.setBounds(10,135,150,25);
         JButton tambahALat = new JButton("Tambah Alat");
         tambahALat.setBounds(175,135,75,25);
         JButton tambahObat = new JButton("Tambah Obat");
         tambahObat.setBounds(250,135,75,25);
-        JButton hapusStorage = new JButton("Hapus Storage");
+        JButton hapusStorage = new JButton("Restock Storage");
         hapusStorage.setBounds(340,135,150,25);
         
         frame.add(editStorage);
@@ -100,7 +110,7 @@ public class Menu_Staff {
         frame.add(hapusStorage);
         hapusStorage.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Hapus_Data_Storage();
+            new Restock_Data_Storage();
             frame.hide();
         }
         });

@@ -16,9 +16,9 @@ import javax.swing.event.DocumentListener;
  *
  * @author Richard
  */
-public class Hapus_Data_Storage {
+public class Restock_Data_Storage {
     
-    public Hapus_Data_Storage(){
+    public Restock_Data_Storage(){
         JFrame frame = new JFrame("Hapus Data Storage");
         frame.setSize(550,450);
         frame.setLocationRelativeTo(null);
@@ -176,7 +176,7 @@ public class Hapus_Data_Storage {
         frame.add(cariId);
         cariId.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            new Hapus_Data_Storage();
+            new Restock_Data_Storage();
             frame.hide();
         }
         });
@@ -231,6 +231,6 @@ public class Hapus_Data_Storage {
 }
     
     public static void main(String[] args) {
-        new Hapus_Data_Storage();
+        new Restock_Data_Storage();
     }
 }

@@ -14,16 +14,16 @@ import javax.swing.JTable;
  *
  * @author Richard
  */
-public class Lihat_Data_Storage {
+public class Lihat_Alat {
     
-    public Lihat_Data_Storage(){
-        JFrame frame = new JFrame("Lihat Data Storage");
+    public Lihat_Alat(){
+        JFrame frame = new JFrame("Lihat List Alat");
         frame.setSize(650,550);
         frame.setLocationRelativeTo(null);
         
 //        List Pasien
         JLabel lihatPasien = new JLabel();
-        lihatPasien.setText("List Pasien\n");
+        lihatPasien.setText("List Alat\n");
         lihatPasien.setBounds(15,10,175,25);
         lihatPasien.setVisible(true);
         
@@ -33,12 +33,13 @@ public class Lihat_Data_Storage {
         // panggil enum
         // design pattern strategy
          String[][] data = {
-             {"Nama Barang1", "Jumlah1", "Harga1"},
-             {"Nama Barang2", "Jumlah2", "Harga2"}
+             { "ID", "Nama", "Jenis", "Jumlah", "Kondisi", "Harga"},
+             { "ID", "Nama", "Jenis", "Jumlah", "Kondisi", "Harga"}
+                 
          };
 //         Column Names
         String[] tabel =
-        {"Nama Barang", "Jumlah", "Harga"};
+        { "ID", "Nama", "Jenis", "Jumlah", "Kondisi", "Harga"};
         
 //        Initializing the JTable
         JTable table = new JTable(data, tabel);
@@ -66,6 +67,6 @@ public class Lihat_Data_Storage {
         frame.setVisible(true);
     }
     public static void main(String[] args) {
-        new Lihat_Data_Storage();
+        new Lihat_Alat();
     }
 }
