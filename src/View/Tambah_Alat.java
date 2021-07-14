@@ -1,6 +1,9 @@
 
 package View;
 
+import Controller.Control;
+import Model.Alat;
+import Model.Cabang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +20,7 @@ import javax.swing.event.DocumentListener;
  * @author Richard
  */
 public class Tambah_Alat{
+    Control c = new Control();
     
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
@@ -85,16 +89,16 @@ public class Tambah_Alat{
 //        });
 
 //        Alamat Pasien
-        JLabel kondisi = new JLabel();
-        kondisi.setText("Kondisi\t:");
-        kondisi.setBounds(15,135,175,25);
-        kondisi.setVisible(true);
-        frame.add(kondisi);
-        
-        JTextField textfieldKondisi = new JTextField();
-        textfieldKondisi.setBounds(210, 135, 300, 25);
-        textfieldKondisi.setBackground(Color.WHITE);
-        frame.add(textfieldKondisi);
+//        JLabel kondisi = new JLabel();
+//        kondisi.setText("Kondisi\t:");
+//        kondisi.setBounds(15,135,175,25);
+//        kondisi.setVisible(true);
+//        frame.add(kondisi);
+//        
+//        JTextField textfieldKondisi = new JTextField();
+//        textfieldKondisi.setBounds(210, 135, 300, 25);
+//        textfieldKondisi.setBackground(Color.WHITE);
+//        frame.add(textfieldKondisi);
 
 //        textfieldKondisi.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
@@ -106,12 +110,12 @@ public class Tambah_Alat{
 //        harga
         JLabel harga = new JLabel();
         harga.setText("Harga\t:");
-        harga.setBounds(15,175,175,25);
+        harga.setBounds(15,135,175,25);
         harga.setVisible(true);
         frame.add(harga);
         
         JTextField textfieldHarga = new JTextField();
-        textfieldHarga.setBounds(210, 175, 300, 25);
+        textfieldHarga.setBounds(210, 135, 300, 25);
         textfieldHarga.setBackground(Color.WHITE);
         frame.add(textfieldHarga);
 
@@ -129,6 +133,18 @@ public class Tambah_Alat{
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
+            Alat alat = new Alat();
+            alat.setNama(textfieldName.getText());
+            alat.setIdCabang(Cabang.getInstance().getId());
+            alat.setJenisAlat(textfieldJenis.getText());
+            alat.setKondisi(true);
+            alat.setStock(Integer.valueOf(textfieldJML.getText()));
+            alat.setHarga(Integer.valueOf(textfieldHarga.getText()));
+            
+            c.insertItemToCabang(alat, alat.getIdCabang());
+            
+            new Menu_Staff();
+            frame.hide();
             // cari
         }
         });

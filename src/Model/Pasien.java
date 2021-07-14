@@ -13,6 +13,7 @@ import java.util.LinkedList;
  * @author User
  */
 public class Pasien extends Person implements InterfaceConstantDaerah {
+
     private int idCabang;
     private String daerahPerawatan;
     private LocalDate tanggalMasuk;
@@ -20,7 +21,30 @@ public class Pasien extends Person implements InterfaceConstantDaerah {
     private boolean dibayar;
     public LinkedList<Penyakit> penyakit;
     public LinkedList<Perawatan> perawatan;
-    
+
+    public int getHargaKamar(String x) {
+        switch (x) {
+            case "VVIP":
+                return InterfaceConstantDaerah.VVIP;
+            case "VIP":
+                return InterfaceConstantDaerah.VIP;
+            case "I":
+                return InterfaceConstantDaerah.I;
+            case "II":
+                return InterfaceConstantDaerah.II;
+            case "III":
+                return InterfaceConstantDaerah.III;
+            case "UGD":
+                return InterfaceConstantDaerah.UGD;
+            case "ICU":
+                return InterfaceConstantDaerah.ICU;
+            case "KARANTINA":
+                return InterfaceConstantDaerah.KARANTINA;
+            case "ANAK":
+                return InterfaceConstantDaerah.ANAK;
+        }
+        return 0;
+    }
     public int getIdCabang() {
         return idCabang;
     }
@@ -28,8 +52,6 @@ public class Pasien extends Person implements InterfaceConstantDaerah {
     public void setIdCabang(int idCabang) {
         this.idCabang = idCabang;
     }
-
-    
 
     public String getDaerahPerawatan() {
         return daerahPerawatan;
@@ -62,7 +84,8 @@ public class Pasien extends Person implements InterfaceConstantDaerah {
     public void setTanggalKeluar(LocalDate tanggalKeluar) {
         this.tanggalKeluar = tanggalKeluar;
     }
-    public static class Builder{
-        
+
+    public static class Builder {
+
     }
 }

@@ -1,9 +1,12 @@
 
 package View;
 
+import Controller.ControlPasien;
+import Model.Pasien;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +20,7 @@ import javax.swing.event.DocumentListener;
  * @author Richard
  */
 public class Tagihan_Pasien {
+    ControlPasien cp = new ControlPasien();
     
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
@@ -96,29 +100,29 @@ public class Tagihan_Pasien {
         });
         
 //        cari dengan id
-        JButton cari = new JButton("Cari");
-        cari.setBounds(370, 140, 140, 25);
-        cari.setBackground(green);
-        frame.add(cari);
-        cari.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            // cari
-        }
-        });
-        
-        // result box
-        JLabel namaPasien = new JLabel("nama"/*dari database*/);
-        namaPasien.setBounds(15, 180, 495, 50);
-        namaPasien.setBackground(Color.WHITE);
-        frame.add(namaPasien);
-        JLabel TTLPasien = new JLabel("TTL"/*dari database*/);
-        TTLPasien.setBounds(15, 230, 495, 50);
-        TTLPasien.setBackground(Color.WHITE);
-        frame.add(TTLPasien);
-        JLabel alamatPasien = new JLabel("alamat"/*dari database*/);
-        alamatPasien.setBounds(15, 280, 495, 50);
-        alamatPasien.setBackground(Color.WHITE);
-        frame.add(alamatPasien);
+//        JButton cari = new JButton("Cari");
+//        cari.setBounds(370, 140, 140, 25);
+//        cari.setBackground(green);
+//        frame.add(cari);
+//        cari.addActionListener(new ActionListener(){
+//        public void actionPerformed(ActionEvent e){
+//            // cari
+//        }
+//        });
+//        
+//        // result box
+//        JLabel namaPasien = new JLabel("nama"/*dari database*/);
+//        namaPasien.setBounds(15, 180, 495, 50);
+//        namaPasien.setBackground(Color.WHITE);
+//        frame.add(namaPasien);
+//        JLabel TTLPasien = new JLabel("TTL"/*dari database*/);
+//        TTLPasien.setBounds(15, 230, 495, 50);
+//        TTLPasien.setBackground(Color.WHITE);
+//        frame.add(TTLPasien);
+//        JLabel alamatPasien = new JLabel("alamat"/*dari database*/);
+//        alamatPasien.setBounds(15, 280, 495, 50);
+//        alamatPasien.setBackground(Color.WHITE);
+//        frame.add(alamatPasien);
         
         //        Tanggal Keluar
 // * date
@@ -147,7 +151,9 @@ public class Tagihan_Pasien {
         frame.add(hapus);
         hapus.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            Cek_Tagihan();
+            Pasien p = cp.getPasienDariAtribut(textfieldName.getText(), textfieldTTL.getText(), textfieldAlamat.getText());
+            LocalDate tgl = LocalDate.parse(textfieldKeluar.getText());
+            Cek_Tagihan(p,tgl);
             frame.hide();
         }
         });
@@ -205,29 +211,29 @@ public class Tagihan_Pasien {
         });
         
 //        cari dengan id
-        JButton cari = new JButton("Cari");
-        cari.setBounds(370, 140, 140, 25);
-        cari.setBackground(green);
-        frame.add(cari);
-        cari.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            // cari
-        }
-        });
-        
-//        result box
-        JLabel namaPasien = new JLabel("nama"/*dari database*/);
-        namaPasien.setBounds(15, 180, 495, 50);
-        namaPasien.setBackground(Color.WHITE);
-        frame.add(namaPasien);
-        JLabel TTLPasien = new JLabel("TTL"/*dari database*/);
-        TTLPasien.setBounds(15, 230, 495, 50);
-        TTLPasien.setBackground(Color.WHITE);
-        frame.add(TTLPasien);
-        JLabel alamatPasien = new JLabel("alamat"/*dari database*/);
-        alamatPasien.setBounds(15, 280, 495, 50);
-        alamatPasien.setBackground(Color.WHITE);
-        frame.add(alamatPasien);
+//        JButton cari = new JButton("Cari");
+//        cari.setBounds(370, 140, 140, 25);
+//        cari.setBackground(green);
+//        frame.add(cari);
+//        cari.addActionListener(new ActionListener(){
+//        public void actionPerformed(ActionEvent e){
+//            // cari
+//        }
+//        });
+//        
+////        result box
+//        JLabel namaPasien = new JLabel("nama"/*dari database*/);
+//        namaPasien.setBounds(15, 180, 495, 50);
+//        namaPasien.setBackground(Color.WHITE);
+//        frame.add(namaPasien);
+//        JLabel TTLPasien = new JLabel("TTL"/*dari database*/);
+//        TTLPasien.setBounds(15, 230, 495, 50);
+//        TTLPasien.setBackground(Color.WHITE);
+//        frame.add(TTLPasien);
+//        JLabel alamatPasien = new JLabel("alamat"/*dari database*/);
+//        alamatPasien.setBounds(15, 280, 495, 50);
+//        alamatPasien.setBackground(Color.WHITE);
+//        frame.add(alamatPasien);
         
         //        Tanggal Keluar
 // * date
@@ -255,8 +261,12 @@ public class Tagihan_Pasien {
         hapus.setBackground(green);
         frame.add(hapus);
         hapus.addActionListener(new ActionListener(){
+            
+            
         public void actionPerformed(ActionEvent e){
-            Cek_Tagihan();
+            Pasien p = cp.getPasienDariId(Integer.valueOf(textfieldID.getText()));
+            LocalDate tgl = LocalDate.parse(textfieldKeluar.getText());
+            Cek_Tagihan(p,tgl);
             frame.hide();
         }
         });
@@ -277,42 +287,42 @@ public class Tagihan_Pasien {
         frame.setVisible(true);
 }
     
-    public void Cek_Tagihan() {
+    public void Cek_Tagihan(Pasien p,LocalDate tgl) {
         JFrame frame = new JFrame("Cek Tagihan Pasien");
         frame.setSize(550,550);
         frame.setLocationRelativeTo(null);
         
     //        result box
-        JLabel namaPasien = new JLabel("nama"/*dari database*/);
+        JLabel namaPasien = new JLabel("nama: " + p.getNama());
         namaPasien.setBounds(15, 15, 495, 50);
         namaPasien.setBackground(Color.WHITE);
         frame.add(namaPasien);
-        JLabel TTLPasien = new JLabel("TTL"/*dari database*/);
+        JLabel TTLPasien = new JLabel("TTL: " + p.getTanggalLahir().toString());
         TTLPasien.setBounds(15, 65, 495, 50);
         TTLPasien.setBackground(Color.WHITE);
         frame.add(TTLPasien);
-        JLabel alamatPasien = new JLabel("alamat"/*dari database*/);
+        JLabel alamatPasien = new JLabel("alamat: " + p.getAlamat());
         alamatPasien.setBounds(15, 115, 495, 50);
         alamatPasien.setBackground(Color.WHITE);
         frame.add(alamatPasien); 
        
 //        tagihan
-        JLabel tagihan = new JLabel("Tagihan" /*dari database */);
+        JLabel tagihan = new JLabel("Tagihan: RP" + cp.getBill(p));
         tagihan.setBounds(15, 165, 495, 150);
         tagihan.setBackground(Color.WHITE);
         frame.add(tagihan);
 
 //        print      
-        JButton print = new JButton("Print");
-        print.setBounds(185,330,150,25);
-        print.setBackground(green);
-        frame.add(print);
-        print.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            Print_Tagihan();
-            frame.hide();
-        }
-        });
+//        JButton print = new JButton("Print");
+//        print.setBounds(185,330,150,25);
+//        print.setBackground(green);
+//        frame.add(print);
+//        print.addActionListener(new ActionListener(){
+//        public void actionPerformed(ActionEvent e){
+//            Print_Tagihan(p,tgl);
+//            frame.hide();
+//        }
+//        });
 
 //        pelunasan      
         JButton hapus = new JButton("Pelunasan");
@@ -342,16 +352,16 @@ public class Tagihan_Pasien {
         frame.setVisible(true);
 }
     
-    public void Print_Tagihan(){
+    public void Print_Tagihan(Pasien p,LocalDate tgl){
         JFrame frame = new JFrame("Print Tagihan Pasien");
-        frame.setSize(550,550);
-        frame.setLocationRelativeTo(null);
-        
-//        tagihan
-        JLabel tagihan = new JLabel("Tagihan"/*dari database*/);
-        tagihan.setBounds(15, 15, 495, 50);
-        tagihan.setBackground(Color.WHITE);
-        frame.add(tagihan);
+//        frame.setSize(550,550);
+//        frame.setLocationRelativeTo(null);
+//        
+////        tagihan
+//        JLabel tagihan = new JLabel("Tagihan" + );
+//        tagihan.setBounds(15, 15, 495, 50);
+//        tagihan.setBackground(Color.WHITE);
+//        frame.add(tagihan);
         
         JButton ok = new JButton("OK");
         ok.setBounds(350, 485, 150, 25);
@@ -359,7 +369,8 @@ public class Tagihan_Pasien {
         frame.add(ok);
         ok.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Cek_Tagihan();
+                cp.UpdateTanggalKeluar(p.getId(),tgl);
+                Cek_Tagihan(p,tgl);
                 frame.hide();
             }
         });
