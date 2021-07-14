@@ -106,7 +106,7 @@ public class ControlStaff {
     public void insertStaff(Staff subject){
         c.insertPerson(subject);
         conn.connect();;
-        String query = "INSERT INTO Staff (IDPerson, IDCabang, Shift, Tanggal,Gaji,Tugas) VALUES (" + subject.getId() +"," + subject.getIdCabang() + ",'" + parseStaffShiftToString(subject.getShift()) + "','" + subject.getTanggalKerja().toString() + "','" + subject.getGaji() + "," + subject.getTugas() + "');";
+        String query = "INSERT INTO Staff (IDPerson, IDCabang, Shift, Tanggal,Gaji,Tugas) VALUES (" + subject.getId() +"," + subject.getIdCabang() + ",'" + parseStaffShiftToString(subject.getShift()) + "','" + subject.getTanggalKerja().toString() + "'," + subject.getGaji() + ",'" + subject.getTugas() + "');";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);

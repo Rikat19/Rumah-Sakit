@@ -90,6 +90,7 @@ public class Control {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        subject.setId(getIdPerson());
     }
 
     public void insertItemToCabang(Item item, int idCabang) {
