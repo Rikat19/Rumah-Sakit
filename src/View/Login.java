@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import  ViewAdmin.*;
 
 /**
  *
@@ -19,6 +20,8 @@ import javax.swing.JTextField;
 public class Login {
 
     public Login() {
+        String uname = "admin";
+        String password = "passwordd";
         Control c = new Control();
         JFrame frame = new JFrame("Login");
         frame.setSize(350, 250);
@@ -35,6 +38,7 @@ public class Login {
         textfieldID.setBounds(15, 40, 300, 25);
         textfieldID.setBackground(Color.WHITE);
         frame.add(textfieldID);
+        String inputID = textfieldID.getText();
 
 //        Login pass
         JLabel pass = new JLabel();
@@ -47,7 +51,8 @@ public class Login {
         textfieldPass.setBounds(15, 105, 300, 25);
         textfieldPass.setBackground(Color.WHITE);
         frame.add(textfieldPass);
-
+        String inputPassword = textfieldPass.getText();
+        
 //        button
         JButton login = new JButton("Login");
         login.setBounds(215, 145, 100, 25);
@@ -57,10 +62,9 @@ public class Login {
         frame.add(login);
         login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // if admin 
-//                new Menu_Admin();
-//            frame.hide();
-                // if staff
+                if(inputID.equals(uname) &&  inputPassword.equals(password)){
+                    new Menu_Admin();
+                    }
                 
                 LinkedList<Cabang> listCabang = c.getAllCabang();
                 for (int i = 0; i < listCabang.size(); i++) {
