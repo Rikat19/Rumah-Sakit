@@ -1,5 +1,14 @@
 package View;
 
+import Controller.Control;
+import Model.Alat;
+import Model.Cabang;
+import Model.Item;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -9,6 +18,8 @@ import javax.swing.JTable;
  * @author Richard
  */
 public class Lihat_Alat {
+    
+    Control c = new Control();
 
     public Lihat_Alat() {
         JFrame frame = new JFrame("Lihat List Alat");
@@ -19,39 +30,20 @@ public class Lihat_Alat {
                 = {"ID", "Nama Alat", "Jumlah", "Harga"};
 
         // design pattern strategy
-        Object[][] data = {
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {4, "Infus", 25, 55000.0}
-        };
+        LinkedList<Item> alat = c.getItemDariIdCabang(Cabang.getInstance().getId());
+        for (int j = 0; j < alat.size(); j++) {
+            if ((alat.get(j) instanceof Alat) == false) {
+                alat.remove(j);
+            }
+        }
+        String[][] data2 = new String[alat.size()][3];
+        for (int i = 0; i < alat.size(); i++) {
+            data2[i][0] = alat.get(i).getNama();
+            data2[i][1] = String.valueOf(alat.get(i).getStock());
+            data2[i][2] = String.valueOf(alat.get(i).getHarga());
+        }
+          
+        String[][] data = data2;
 
 //        Initializing the JTable
         JTable table = new JTable(data, tabel);
@@ -61,8 +53,6 @@ public class Lihat_Alat {
         frame.add(sp);
 //        biar compact
         frame.pack();
-
-        frame.setVisible(true);
     }
 
     public static void main(String[] args) {
