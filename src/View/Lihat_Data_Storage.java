@@ -1,5 +1,14 @@
 package View;
 
+
+import Controller.Control;
+import Model.Cabang;
+import Model.Item;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -10,25 +19,27 @@ import javax.swing.JTable;
  */
 public class Lihat_Data_Storage {
 
+    Control c = new Control();
+
     public Lihat_Data_Storage() {
         JFrame frame = new JFrame("Lihat List Items");
         frame.setLocationRelativeTo(null);
 
 //         Column Names
-        String[] tabel
-                = {"ID", "Nama Item", "Jumlah", "Harga"};
-
+        String[] tabel = {"Nama Item", "Jumlah", "Harga"};
+      
+        // ntar pake action listener
+        // panggil enum
         // design pattern strategy
-        Object[][] data = {
-            {1, "Aspirin", 125, 25000.0},
-            {2, "Antibiotic", 135, 35000.0},
-            {3, "Antiseptic", 115, 30000.0},
-            {4, "AntiPyretics", 125, 40000.0},
-            {1, "Tongkat", 25, 125000.0},
-            {2, "Suntikan", 35, 50000.0},
-            {3, "Gips", 15, 85000.0},
-            {4, "Infus", 25, 55000.0}
-        };
+        LinkedList<Item> list = c.getItemDariIdCabang(Cabang.getInstance().getId());
+        Object[][] data2 = new Object[list.size()][3];
+        for (int i = 0; i < list.size(); i++) {
+            data2[i][0] = list.get(i).getNama();
+            data2[i][1] = String.valueOf(list.get(i).getStock());
+            data2[i][2] = String.valueOf(list.get(i).getHarga());
+        }
+        
+        String[][] data = data2;
 
 //        Initializing the JTable
         JTable table = new JTable(data, tabel);
@@ -38,8 +49,6 @@ public class Lihat_Data_Storage {
         frame.add(sp);
 //        biar compact
         frame.pack();
-
-        frame.setVisible(true);
     }
 
     public static void main(String[] args) {

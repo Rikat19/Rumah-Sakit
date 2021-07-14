@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.Alat;
+import Model.InterfaceConstantDaerah;
 import Model.Item;
 import Model.Obat;
 import Model.Pasien;
@@ -14,6 +15,8 @@ import Model.Perawatan;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -26,6 +29,16 @@ public class ControlPasien {
     Control c = new Control();
 
     static DatabaseHandler conn = new DatabaseHandler();
+    
+    public Pasien getPasienDariAtribut(String nama,String ttl,String alamat){
+        ArrayList<Pasien> list = getAllPasien();
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).getNama().equals(nama) && list.get(i).getTanggalLahir() == (LocalDate.parse(ttl)) && list.get(i).getAlamat().equals(alamat)){
+                return list.get(i);
+            }
+        }
+        return null;
+    }
 
     public ArrayList<Pasien> getAllPasien() {
         ArrayList<Pasien> pasien = new ArrayList<>();
@@ -52,7 +65,11 @@ public class ControlPasien {
 
                 user.setDaerahPerawatan(rs.getString("Daerah"));
                 user.setTanggalMasuk(rs.getDate("TglMasuk").toLocalDate());
-                user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
+                try{
+                    user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
+                }catch(Exception e){
+                    user.setTanggalKeluar(LocalDate.MIN);
+                }
                 user.setIdCabang(rs.getInt("IDCabang"));
                 pasien.add(user);
             }
@@ -112,11 +129,14 @@ public class ControlPasien {
         }
         return isi;
     }
-
+    public static void main(String[] args) {
+        
+    }
     public void insertPasien(Pasien subject) {
         c.insertPerson(subject);
+        subject.setId(c.getIdPerson());
         conn.connect();
-        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() + "," + subject.getIdCabang() + ",'" + subject.getTanggalMasuk().toString() + "','" + subject.getTanggalKeluar().toString() + "','" + subject.isDibayar() + "');";
+        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() + ","+ subject.getIdCabang() + ",'" + subject.getDaerahPerawatan() + "','" + subject.getTanggalMasuk().toString() + "'," + null + "," + subject.isDibayar() + ");";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);
@@ -140,6 +160,30 @@ public class ControlPasien {
             e.printStackTrace();
         }
         return x;
+    }
+    
+    public int getJumlahHari(LocalDate dari,LocalDate sampai){
+        int lamaTinggal = (int) ChronoUnit.DAYS.between(dari, sampai);
+        return lamaTinggal;
+    }
+    
+    public int getBill(Pasien p){
+        int total = 0;
+        int lamaTinggal = getJumlahHari(p.getTanggalMasuk(),p.getTanggalKeluar());
+        
+        total += (lamaTinggal * p.getHargaKamar(p.getDaerahPerawatan()));
+        for (int i = 0; i < p.perawatan.size(); i++) {
+            for (int j = 0; j < p.perawatan.get(i).idAlat.size(); j++) {
+                Alat alat = cariAlatDariIdAlat(p.perawatan.get(i).idAlat.get(j));
+                total += alat.getHarga();
+            }
+            for (int j = 0; j < p.perawatan.get(i).idObat.size(); j++) {
+                Obat obat = cariObatDariIdObat(p.perawatan.get(i).idObat.get(j));
+                total += obat.getHarga();
+            }
+            total += p.perawatan.get(i).getDokter().getBiayaJasa();
+        }
+        return total;
     }
     
     int cariIdItemDariIdAlat(int idAlat) {
@@ -178,6 +222,17 @@ public class ControlPasien {
         int x = item.getStock() - 1;
         conn.connect();
         String query = "UPDATE Item SET Stok=" + x + " WHERE IDItem=" + idItem + ";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void UpdateTanggalKeluar(int idPerson,LocalDate tgl){
+        conn.connect();
+        String query = "UPDATE Pasien SET TglKeluar='" + tgl.toString() + "' WHERE IDPerson=" + idPerson + ";";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);
@@ -274,7 +329,7 @@ public class ControlPasien {
         return id;
     }
 
-    ;
+    
     private int cariIdPasien(Pasien pasien) {
         conn.connect();
         int id = 0;

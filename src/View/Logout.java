@@ -1,5 +1,6 @@
 package View;
 
+import Model.Cabang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +13,10 @@ import javax.swing.JLabel;
  * @author Richard
  */
 public class Logout {
-
+  
+  Color green = new Color(0, 255, 0);
+  Color red = new Color(250, 0, 0);
+  
     public Logout() {
         JFrame frame = new JFrame("Logout");
         frame.setSize(350, 200);
@@ -28,21 +32,20 @@ public class Logout {
 //        tombol ya
         JButton ya = new JButton("Ya");
         ya.setBounds(50, 80, 100, 25);
-        Color green = new Color(0, 255, 0);
         ya.setBackground(green);
         frame.add(ya);
-
-        ya.addActionListener(new ActionListener() {
+      
+      ya.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Cabang.setInstance(null);
                 new Login();
                 frame.hide();
             }
         });
-
+                  
 //        tombol tidak
         JButton tidak = new JButton("Tidak");
         tidak.setBounds(175, 80, 100, 25);
-        Color red = new Color(250, 0, 0);
         tidak.setBackground(red);
         frame.add(tidak);
 
@@ -52,7 +55,7 @@ public class Logout {
                 frame.hide();
             }
         });
-
+      
         frame.setLayout(null);
         frame.setVisible(true);
     }

@@ -1,5 +1,14 @@
 package View;
 
+
+import Model.Dokter;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -10,22 +19,29 @@ import javax.swing.JTable;
  */
 public class Lihat_Dokter {
 
-    public Lihat_Dokter() {
+    public Lihat_Dokter(ArrayList<Dokter> list,int hari) {
         JFrame frame = new JFrame("Lihat List Dokter");
         frame.setLocationRelativeTo(null);
 
+            
 //         Column Names
-        String[] tabel
-                = {"ID", "Nama Dokter", "Spesialis", "Jam Mulai Praktek", "Jam Selesai Praktek", "Biaya Jasa"};
+        String[] tabel = {"ID", "Nama Dokter", "Spesialis", "Jam Mulai Praktek", "Jam Selesai Praktek", "Biaya Jasa"};
+      
+        // ntar pake action listener
+        // panggil enum
+        // design pattern strategy
+        String[][] data2 = new String[list.size()][6];
+        for (int i = 0; i < data2.length; i++) {
+            data2[i][0] = String.valueOf(list.get(i).getId());
+            data2[i][1] = list.get(i).getNama();
+            data2[i][2] = list.get(i).getSpecialist();
+            data2[i][3] = String.valueOf(list.get(i).getJadwal()[hari][0]) + ":" + String.valueOf(list.get(i).getJadwal()[hari][2]);
+            data2[i][4] = String.valueOf(list.get(i).getJadwal()[hari][1]) + ":" + String.valueOf(list.get(i).getJadwal()[hari][3]);
+            data2[i][5] = String.valueOf(list.get(i).getBiayaJasa());
+        }
 
-//        design pattern strategy
-        Object[][] data = {
-            {1, "Joni", "Paru Paru", "07.00", "11.00", 250000.0},
-            {2, "Hilda", "Internis", "08.00", "12.00", 150000.0},
-            {3, "Septian", "Anak", "12.00", "17.00", 100000.0},
-            {4, "Mary", "Anak", "10.00", "14.00", 100000.0}
-        };
-
+        String[][] data = data2;
+      
 //        Initializing the JTable
         JTable table = new JTable(data, tabel);
 
@@ -41,4 +57,5 @@ public class Lihat_Dokter {
     public static void main(String[] args) {
         new Lihat_Dokter();
     }
-}
+
+

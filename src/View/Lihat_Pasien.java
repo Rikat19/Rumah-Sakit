@@ -1,5 +1,13 @@
 package View;
 
+import Controller.ControlPasien;
+import Model.Cabang;
+import Model.Pasien;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -10,6 +18,8 @@ import javax.swing.JTable;
  */
 public class Lihat_Pasien {
 
+    ControlPasien cp = new ControlPasien();
+
     public Lihat_Pasien() {
         JFrame frame = new JFrame("Lihat List Pasien");
         frame.setLocationRelativeTo(null);
@@ -18,13 +28,23 @@ public class Lihat_Pasien {
         String[] tabel
                 = {"ID", "Nama", "TTL", "Gender", "Alamat", "Daerah Perawatan", "Tanggal Masuk", "Tanggal Keluar"};
 
+        // ntar pake action listener
+        // panggil enum
         // design pattern strategy
-        Object[][] data = {
-            {1, "Geri", "12-05-1999", "M", "Dago", "VIP", "13-07-2021", "13-07-2021"},
-            {2, "Leri", "12-05-1999", "M", "Dago", "UGD", "13-07-2021", " "},
-            {3, "Terry", "12-05-1999", "M", "Dago", "Karantina", "13-07-2021", " "},
-            {4, "Mary", "12-05-2015", "F", "Dago", "Anak", "13-07-2021", "13-07-2021"}
-        };
+        ArrayList<Pasien> list = cp.getPasienByCabang(Cabang.getInstance().getId());
+        String[][] data2 = new String[list.size()][8];
+        for (int i = 0; i < list.size(); i++) {
+            data2[i][0] = String.valueOf(list.get(i).getId());
+            data2[i][1] = list.get(i).getNama();
+            data2[i][2] = list.get(i).getTanggalLahir().toString();
+            data2[i][3] = list.get(i).getGender();
+            data2[i][4] = list.get(i).getAlamat();
+            data2[i][5] = list.get(i).getDaerahPerawatan();
+            data2[i][6] = list.get(i).getTanggalMasuk().toString();
+            data2[i][7] = list.get(i).getTanggalKeluar().toString();
+        }
+        
+        String[][] data = data2;
 
 //        Initializing the JTable
         JTable table = new JTable(data, tabel);

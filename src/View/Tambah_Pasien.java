@@ -1,12 +1,17 @@
 
 package View;
 
+import Controller.ControlPasien;
+import Model.Cabang;
+import Model.Pasien;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -22,6 +27,7 @@ public class Tambah_Pasien{
     Color red = new Color(250, 0, 0);
     
     public Tambah_Pasien(){
+        ControlPasien cp = new ControlPasien();
         JFrame frame = new JFrame("Tambah Riwayat Pasien");
         frame.setSize(550,550);
         frame.setLocationRelativeTo(null);
@@ -105,26 +111,26 @@ public class Tambah_Pasien{
 
 //        Dokter
 // *lempar
-        JLabel dokter = new JLabel();
-        dokter.setText("Dokter yang Merawat\t:");
-        dokter.setBounds(15,175,175,25);
-        dokter.setVisible(true);
-        frame.add(dokter);
-        
-        JButton cariDokter = new JButton("Cari");
-        cariDokter.setBounds(410, 175, 100, 25);
-        cariDokter.setBackground(green);
-        frame.add(cariDokter);
-        cariDokter.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            new Jadwal_Dokter();
-        }
-        });
-        
-        JTextField textfieldDokter = new JTextField();
-        textfieldDokter.setBounds(210, 175, 200, 25);
-        textfieldDokter.setBackground(Color.WHITE);
-        frame.add(textfieldDokter);
+//        JLabel dokter = new JLabel();
+//        dokter.setText("Dokter yang Merawat\t:");
+//        dokter.setBounds(15,175,175,25);
+//        dokter.setVisible(true);
+//        frame.add(dokter);
+//        
+//        JButton cariDokter = new JButton("Cari");
+//        cariDokter.setBounds(410, 175, 100, 25);
+//        cariDokter.setBackground(green);
+//        frame.add(cariDokter);
+//        cariDokter.addActionListener(new ActionListener(){
+//        public void actionPerformed(ActionEvent e){
+//            new Jadwal_Dokter();
+//        }
+//        });
+//        
+//        JTextField textfieldDokter = new JTextField();
+//        textfieldDokter.setBounds(210, 175, 200, 25);
+//        textfieldDokter.setBackground(Color.WHITE);
+//        frame.add(textfieldDokter);
 
 //        textfieldDokter.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
@@ -192,6 +198,28 @@ public class Tambah_Pasien{
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
+            Pasien p = new Pasien();
+            p.setNama(textfieldName.getText());
+            p.setAlamat(textfieldAlamat.getText());
+            p.setGender(textfieldGender.getText());
+            p.setDaerahPerawatan(textfieldDaerahRawat.getText().toUpperCase());
+            p.setTanggalLahir(LocalDate.parse(textfieldTTL.getText()));
+            p.setTanggalMasuk(LocalDate.parse(textfieldMasuk.getText()));
+            
+            p.setIdCabang(Cabang.getInstance().getId());
+            LocalDate x = LocalDate.MIN;
+            boolean get = true;
+            try{
+                x = LocalDate.parse(textfieldMasuk.getText());
+            }catch(Exception ec){
+                JOptionPane.showMessageDialog(null, "Format input salah... ini seharusnya pakai date input library.\n tapi sesuatu terjadi dan kita harus improv");
+                get = false;
+            }
+            if(get){
+                cp.insertPasien(p);
+                new Menu_Staff();
+                frame.hide();
+            }
             // cari
         }
         });

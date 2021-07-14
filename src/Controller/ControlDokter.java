@@ -34,7 +34,7 @@ public class ControlDokter {
                 c.cariPersonDariId(subject, rs.getString("IDPerson"));
                 subject.setBiayaJasa(rs.getInt("BiayaJasa"));
                 subject.setSpecialist(rs.getString("Specialist"));
-                subject.setJadwal(parseJadwalToInt(rs.getString("JadwalPraktek")));
+                subject.setJadwal(parseJadwalToInt(rs.getString("JamPraktek")));
                 dokter.add(subject);
             }
         } catch (SQLException e) {
@@ -78,10 +78,10 @@ public class ControlDokter {
         }
     }
     
-    public ArrayList<Dokter> getDokterByJadwal(int hari,int jam){
+    public ArrayList<Dokter> getDokterByJadwal(int hari){
         ArrayList<Dokter> list = getAllDokter();
         for (int i = 0; i < list.size(); i++) {
-            if(list.get(i).getJadwal()[hari][0] > jam || list.get(i).getJadwal()[hari][1] < jam){
+            if(list.get(i).getJadwal()[hari][0] == -1){
                 list.remove(i);
             }
         }
