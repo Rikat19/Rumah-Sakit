@@ -30,7 +30,7 @@ public class Tambah_Penyakit_Pasien{
         frame.setSize(550,550);
         frame.setLocationRelativeTo(null);
         
-//        Nama Pasien
+//        ID Pasien
         JLabel id = new JLabel();
         id.setText("ID Pasien\t:");
         id.setBounds(15,15,175,25);
@@ -49,7 +49,7 @@ public class Tambah_Penyakit_Pasien{
 //            
 //        });
 
-//        TTL Pasien
+//        nama??
 //        JLabel nama = new JLabel();
 //        nama.setText("Nama Pasien\t:");
 //        nama.setBounds(15,55,175,25);
@@ -68,7 +68,7 @@ public class Tambah_Penyakit_Pasien{
 //            
 //        });
 
-//        Gender
+//        penyakit
 // radio
         JLabel penyakit = new JLabel();
         penyakit.setText("Penyakit\t:");
@@ -88,7 +88,7 @@ public class Tambah_Penyakit_Pasien{
 //            
 //        });
 
-//        Alamat Pasien
+//        lethality
         JLabel lethal = new JLabel();
         lethal.setText("Lethality Level\t:");
         lethal.setBounds(15,135,175,25);
@@ -107,7 +107,7 @@ public class Tambah_Penyakit_Pasien{
 //            
 //        });
 
-//        Alamat Pasien
+//        infectious
         JLabel infect = new JLabel();
         infect.setText("Infectious Level\t:");
         infect.setBounds(15,175,175,25);

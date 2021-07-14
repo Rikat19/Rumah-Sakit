@@ -185,7 +185,7 @@ public class Restock_Data_Storage {
         });
 
 //        cari dengan nama
-        JButton cariNama = new JButton("Cari dengan ID");
+        JButton cariNama = new JButton("Cari dengan Nama");
         cariNama.setBounds(210, 100, 140, 25);
         cariNama.setBackground(green);
         frame.add(cariNama);
