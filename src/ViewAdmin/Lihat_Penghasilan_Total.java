@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -23,93 +24,96 @@ import javax.swing.JTextField;
  * @author Devan
  */
 public class Lihat_Penghasilan_Total {
+
     ControlPasien cp = new ControlPasien();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
 
     public Lihat_Penghasilan_Total() {
         JFrame frame = new JFrame("Penghasilan Total");
-        frame.setSize(550,550);
+        frame.setSize(550, 550);
         frame.setLocationRelativeTo(null);
-        
-        
 
 //        Bulan
         JLabel bulan = new JLabel();
         bulan.setText("Bulan\t:");
-        bulan.setBounds(15,15,175,25);
+        bulan.setBounds(15, 15, 175, 25);
         bulan.setVisible(true);
         frame.add(bulan);
-        
+
         JTextField textfieldName = new JTextField();
         textfieldName.setBounds(210, 15, 300, 25);
         textfieldName.setBackground(Color.WHITE);
         frame.add(textfieldName);
-        
+
 //        textfieldName.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
 //            
 //        });
-
 //        Tahun
         JLabel tahun = new JLabel();
         tahun.setText("Tahun \t:");
-        tahun.setBounds(15,55,175,25);
+        tahun.setBounds(15, 55, 175, 25);
         tahun.setVisible(true);
         frame.add(tahun);
-        
+
         JTextField textfieldTTL = new JTextField();
         textfieldTTL.setBounds(210, 55, 300, 25);
         textfieldTTL.setBackground(Color.WHITE);
         frame.add(textfieldTTL);
-        
+
 //        textfieldTTL.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
 //            
 //        });
-
 //        cari
         JButton cari = new JButton("Cari");
         cari.setBounds(370, 335, 140, 25);
         cari.setBackground(green);
         frame.add(cari);
-        cari.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            ArrayList<Pasien> p = cp.getAllPasien();
-            LocalDate tgl = LocalDate.parse("0001-01-01");
-            tgl = tgl.plusYears(Integer.valueOf(textfieldTTL.getText()) - 1);
-            tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
-            int total = 0;
-            for (int i = 0; i < p.size(); i++) {
-                if(p.get(i).getTanggalKeluar().getMonth() == tgl.getMonth() && p.get(i).getTanggalKeluar().getYear() == tgl.getYear()){
-                    total += cp.getBill(p.get(i));
+        cari.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Pasien> p = cp.getAllPasien();
+                LocalDate tgl = LocalDate.parse("0001-01-01");
+                tgl = tgl.plusYears(Integer.valueOf(textfieldTTL.getText()) - 1);
+                tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
+                int total = 0;
+                for (int i = 0; i < p.size(); i++) {
+                    if (p.get(i).getTanggalKeluar().getMonth() == tgl.getMonth() && p.get(i).getTanggalKeluar().getYear() == tgl.getYear()) {
+                        total += cp.getBill(p.get(i));
+                    }
                 }
+                JOptionPane.showMessageDialog(null, "RP: " + total);
+                frame.setLayout(null);
+                frame.setVisible(true);
+                // cari
             }
-            // cari
-        }
         });
 
 //        back      
         JButton back = new JButton("Back");
-        back.setBounds(370,375,140,25);
+        back.setBounds(370, 375, 140, 25);
         back.setBackground(red);
         frame.add(back);
-        back.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            new Menu_Admin();
-            frame.hide();
-        }
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.setLayout(null);
+                frame.setVisible(true);
+                new Menu_Admin();
+                frame.hide();
+            }
         });
-        
+
         frame.setLayout(null);
         frame.setVisible(true);
     }
-        public static void main(String[] args) {
+
+    public static void main(String[] args) {
         new Lihat_Penghasilan_Total();
     }
-    
+
 }

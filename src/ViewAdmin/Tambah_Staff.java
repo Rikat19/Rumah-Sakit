@@ -5,6 +5,8 @@
  */
 package ViewAdmin;
 
+import Controller.ControlStaff;
+import Model.Staff;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +23,7 @@ import javax.swing.event.DocumentListener;
  * @author Devan
  */
 public class Tambah_Staff{
-    
+    ControlStaff cs = new ControlStaff();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
     
@@ -51,7 +53,7 @@ public class Tambah_Staff{
 
 //        Cabang kerja
         JLabel TTL = new JLabel();
-        TTL.setText("Cabang Kerja Staff \t:");
+        TTL.setText("Cabang id \t:");
         TTL.setBounds(15,55,175,25);
         TTL.setVisible(true);
         frame.add(TTL);

@@ -30,11 +30,12 @@ public class ControlStaff {
             while (rs.next()) {
                 Staff s= new Staff();
                 c.cariPersonDariId(s, rs.getString("IDPerson"));
-                s.setAlamat(rs.getString("Alamat"));
                 s.setGaji(rs.getInt("Gaji"));
                 s.setTugas(rs.getString("Tugas"));
                 s.setShift(parseStaffShiftToInt(rs.getString("Shift")));
                 s.setTanggalKerja(rs.getDate("Tanggal").toLocalDate());
+                s.setIdCabang(rs.getInt("IDCabang"));
+                staff.add(s);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,11 +52,11 @@ public class ControlStaff {
             while (rs.next()) {
                 Staff s = new Staff();
                 c.cariPersonDariId(s, rs.getString("IDPerson"));
-                s.setAlamat(rs.getString("Alamat"));
                 s.setGaji(rs.getInt("Gaji"));
                 s.setTugas(rs.getString("Tugas"));
                 s.setShift(parseStaffShiftToInt(rs.getString("Shift")));
                 s.setTanggalKerja(rs.getDate("Tanggal").toLocalDate());
+                s.setIdCabang(rs.getInt("IDCabang"));
                 list.add(s);
             }
         } catch (SQLException e) {
@@ -115,6 +116,7 @@ public class ControlStaff {
         }
     }
     public int[] parseStaffShiftToInt(String x){
+        x.trim();
         String[] strArray = x.split(",");
         int[] hasil = new int[strArray.length];
         for (int i = 0; i < strArray.length; i++) {
@@ -124,10 +126,9 @@ public class ControlStaff {
     }
     public String parseStaffShiftToString(int[] x){
         String y = "";
-        for (int i = 0; i < x.length - 1; i++) {
+        for (int i = 0; i < x.length; i++) {
             y += x[i] + ",";
         }
-        y += x[x.length - 1];
         return y;
     }
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -99,10 +100,15 @@ public class Lihat_Penghasilan_Per_Cabang {
                 tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
                 int total = 0;
                 for (int i = 0; i < p.size(); i++) {
-                    if(p.get(i).getTanggalKeluar().getMonth() == tgl.getMonth() && p.get(i).getTanggalKeluar().getYear() == tgl.getYear()){
+                    if (p.get(i).getTanggalKeluar().getMonth() == tgl.getMonth() && p.get(i).getTanggalKeluar().getYear() == tgl.getYear()) {
                         total += cp.getBill(p.get(i));
                     }
                 }
+                JOptionPane.showMessageDialog(null, "RP: " + total);
+                frame.setLayout(null);
+                frame.setVisible(true);
+                new Menu_Admin();
+                frame.hide();
                 // cari
             }
         });
@@ -114,6 +120,8 @@ public class Lihat_Penghasilan_Per_Cabang {
         frame.add(back);
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                frame.setLayout(null);
+                frame.setVisible(true);
                 new Menu_Admin();
                 frame.hide();
             }

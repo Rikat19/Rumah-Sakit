@@ -35,7 +35,6 @@ public class Lihat_Staff {
         JFrame frame = new JFrame("Lihat Staff");
         frame.setLocationRelativeTo(null);
         ArrayList<Staff> list = cs.getAllStaff();
-
         String[][] data2 = new String[list.size()][5];
         for (int i = 0; i < list.size(); i++) {
             data2[i][0] = String.valueOf(list.get(i).getId());

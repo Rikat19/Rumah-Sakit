@@ -2,6 +2,7 @@ package View;
 
 import Controller.Control;
 import Model.Cabang;
+import Model.Status;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +19,7 @@ import  ViewAdmin.*;
  * @author Richard
  */
 public class Login {
-
+    
     public Login() {
         String uname = "admin";
         String password = "passwordd";
