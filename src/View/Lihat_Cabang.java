@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -25,42 +26,23 @@ public class Lihat_Cabang {
 
     public Lihat_Cabang() {
      JFrame frame = new JFrame("Lihat Cabang");
-        frame.setSize(650,550);
         frame.setLocationRelativeTo(null);
         
-     //List Staff
-        JLabel lihatCabang = new JLabel();
-        lihatCabang.setText("List Cabang \n");
-        lihatCabang.setBounds(15,10,175,25);
-        lihatCabang.setVisible(true);
+        String[]tabel = 
+             {"ID Cabang", "Nama Cabang", "Alamat Cabang"};
         
-        frame.add(lihatCabang);
-        
-        String[][] data = {
-             { "ID Cabang", "Nama Cabang", "Alamat Cabang"/*1*/},
-         };
-        
-         String[] tabel =
-        { "ID Cabang ", "Nama Cabang", "Alamat Cabang"};
+        Object[][] data ={
+            {1,"Cabang A","TKI 2"},
+            {2,"Cabang B","TKI 3"}
+        };
         
         
         JTable table = new JTable(data, tabel);
-        table.setBounds(15, 50, 600, 300);
-        frame.add(table);
         
-          //back      
-        JButton back = new JButton("Back");
-        back.setBounds(450,450,150,25);
-        Color red = new Color(250, 0, 0);
-        back.setBackground(red);
-        frame.add(back);
-        back.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            new Menu_Admin();
-        }
-        });
+        JScrollPane sp = new JScrollPane(table);
+        frame.add(sp);
         
-        frame.setLayout(null);
+        frame.pack();
         frame.setVisible(true);
     }
     
