@@ -11,7 +11,7 @@ import javax.swing.JTable;
 public class Lihat_Data_Storage {
 
     public Lihat_Data_Storage() {
-        JFrame frame = new JFrame("Lihat List Obat");
+        JFrame frame = new JFrame("Lihat List Items");
         frame.setLocationRelativeTo(null);
 
 //         Column Names

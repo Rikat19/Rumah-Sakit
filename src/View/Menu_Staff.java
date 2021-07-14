@@ -46,16 +46,16 @@ public class Menu_Staff {
             }
         });
 
-        JButton editPasien = new JButton("Edit Pasien");
-        editPasien.setBounds(290, 45, 125, 25);
-        frame.add(editPasien);
-
-        editPasien.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new Edit_Pasien();
-                frame.hide();
-            }
-        });
+//        JButton editPasien = new JButton("Edit Pasien");
+//        editPasien.setBounds(290, 45, 125, 25);
+//        frame.add(editPasien);
+//
+//        editPasien.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                new Edit_Pasien();
+//                frame.hide();
+//            }
+//        });
 
         JButton tambahPenyakit = new JButton("Tambah Penyakit Pasien");
         tambahPenyakit.setBounds(10, 80, 200, 25);

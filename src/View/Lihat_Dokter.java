@@ -11,14 +11,14 @@ import javax.swing.JTable;
 public class Lihat_Dokter {
 
     public Lihat_Dokter() {
-        JFrame frame = new JFrame("Lihat List Obat");
+        JFrame frame = new JFrame("Lihat List Dokter");
         frame.setLocationRelativeTo(null);
 
 //         Column Names
         String[] tabel
                 = {"ID", "Nama Dokter", "Spesialis", "Jam Mulai Praktek", "Jam Selesai Praktek", "Biaya Jasa"};
 
-        // design pattern strategy
+//        design pattern strategy
         Object[][] data = {
             {1, "Joni", "Paru Paru", "07.00", "11.00", 250000.0},
             {2, "Hilda", "Internis", "08.00", "12.00", 150000.0},
@@ -29,11 +29,11 @@ public class Lihat_Dokter {
 //        Initializing the JTable
         JTable table = new JTable(data, tabel);
 
-//        //adding it to JScrollPane
+//        adding it to JScrollPane
         JScrollPane sp = new JScrollPane(table);
         frame.add(sp);
 //        biar compact
-        frame.pack();
+//        frame.pack();
 
         frame.setVisible(true);
     }

@@ -11,7 +11,7 @@ import javax.swing.JTable;
 public class Lihat_Pasien {
 
     public Lihat_Pasien() {
-        JFrame frame = new JFrame("Lihat List Obat");
+        JFrame frame = new JFrame("Lihat List Pasien");
         frame.setLocationRelativeTo(null);
 
 //         Column Names
