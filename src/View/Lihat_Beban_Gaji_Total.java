@@ -67,26 +67,6 @@ public class Lihat_Beban_Gaji_Total {
 //            
 //        });
 
-//       id cabang
-        JLabel cabang = new JLabel();
-        cabang.setText("ID Cabang \t:");
-        cabang.setBounds(15,95,175,25);
-        cabang.setVisible(true);
-        frame.add(cabang);
-        
-        JTextField textfieldGender = new JTextField();
-        textfieldGender.setBounds(210, 95, 300, 25);
-        textfieldGender.setBackground(Color.WHITE);
-        frame.add(textfieldGender);
-        
-//        textfieldGender.getDocument().addDocumentListener(new DocumentListener() {
-//            public void inputName(DocumentEvent e){
-//                System.out.println("");
-//            }
-//            
-//        });
-
-
 //        cari
         JButton cari = new JButton("Cari");
         cari.setBounds(370, 335, 140, 25);

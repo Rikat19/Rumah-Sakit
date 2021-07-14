@@ -101,6 +101,13 @@ public class Menu_Admin {
            new Lihat_Penghasilan_Total();
         }
         });
+        
+        frame.add(lihatPenghasilanPerCabang);
+        lihatPenghasilanPerCabang.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+           new Lihat_Penghasilan_Per_Cabang();
+        }
+        });
           
          // beban gaji
         JLabel bebanGaji = new JLabel();

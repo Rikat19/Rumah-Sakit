@@ -22,7 +22,7 @@ Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
 
     public Lihat_Beban_Gaji_Per_Cabang() {
-        JFrame frame = new JFrame("Beban Gaji Total ");
+        JFrame frame = new JFrame("Beban Gaji Per Cabang ");
         frame.setSize(550,550);
         frame.setLocationRelativeTo(null);
         
