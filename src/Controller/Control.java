@@ -296,4 +296,15 @@ public class Control {
         }
         return false;
     }
+    public void restokItem(Item item, int idItem,int jumlah) {
+        int x = item.getStock() + jumlah;
+        conn.connect();
+        String query = "UPDATE Item SET Stok=" + x + " WHERE IDItem=" + idItem + ";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

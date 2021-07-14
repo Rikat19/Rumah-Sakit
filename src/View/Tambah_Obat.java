@@ -122,7 +122,7 @@ public class Tambah_Obat {
 //            
 //        });
 //        cari
-        JButton cari = new JButton("Cari");
+        JButton cari = new JButton("Tambah");
         cari.setBounds(370, 220, 140, 25);
         cari.setBackground(green);
         frame.add(cari);

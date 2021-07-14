@@ -29,11 +29,11 @@ public class ControlPasien {
     Control c = new Control();
 
     static DatabaseHandler conn = new DatabaseHandler();
-    
-    public Pasien getPasienDariAtribut(String nama,String ttl,String alamat){
+
+    public Pasien getPasienDariAtribut(String nama, String ttl, String alamat) {
         ArrayList<Pasien> list = getAllPasien();
         for (int i = 0; i < list.size(); i++) {
-            if(list.get(i).getNama().equals(nama) && list.get(i).getTanggalLahir() == (LocalDate.parse(ttl)) && list.get(i).getAlamat().equals(alamat)){
+            if (list.get(i).getNama().equals(nama) && list.get(i).getTanggalLahir() == (LocalDate.parse(ttl)) && list.get(i).getAlamat().equals(alamat)) {
                 return list.get(i);
             }
         }
@@ -65,15 +65,15 @@ public class ControlPasien {
 
                 user.setDaerahPerawatan(rs.getString("Daerah"));
                 user.setTanggalMasuk(rs.getDate("TglMasuk").toLocalDate());
-                try{
+                try {
                     user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
-                }catch(Exception e){
+                } catch (Exception e) {
                     user.setTanggalKeluar(LocalDate.MIN);
                 }
                 user.setIdCabang(rs.getInt("IDCabang"));
-                if(rs.getInt("Dibayar") == 1){
+                if (rs.getInt("Dibayar") == 1) {
                     user.setDibayar(true);
-                }else{
+                } else {
                     user.setDibayar(false);
                 }
                 pasien.add(user);
@@ -134,14 +134,16 @@ public class ControlPasien {
         }
         return isi;
     }
+
     public static void main(String[] args) {
-        
+
     }
+
     public void insertPasien(Pasien subject) {
         c.insertPerson(subject);
         subject.setId(c.getIdPerson());
         conn.connect();
-        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() + ","+ subject.getIdCabang() + ",'" + subject.getDaerahPerawatan() + "','" + subject.getTanggalMasuk().toString() + "'," + null + "," + subject.isDibayar() + ");";
+        String query = "INSERT INTO pasien (IDPerson, IDCabang, Daerah, TglMasuk,TglKeluar,dibayar) VALUES (" + subject.getId() + "," + subject.getIdCabang() + ",'" + subject.getDaerahPerawatan() + "','" + subject.getTanggalMasuk().toString() + "'," + null + "," + subject.isDibayar() + ");";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);
@@ -166,16 +168,16 @@ public class ControlPasien {
         }
         return x;
     }
-    
-    public int getJumlahHari(LocalDate dari,LocalDate sampai){
+
+    public int getJumlahHari(LocalDate dari, LocalDate sampai) {
         int lamaTinggal = (int) ChronoUnit.DAYS.between(dari, sampai);
         return lamaTinggal;
     }
-    
-    public int getBill(Pasien p){
+
+    public int getBill(Pasien p) {
         int total = 0;
-        int lamaTinggal = getJumlahHari(p.getTanggalMasuk(),p.getTanggalKeluar());
-        
+        int lamaTinggal = getJumlahHari(p.getTanggalMasuk(), p.getTanggalKeluar());
+
         total += (lamaTinggal * p.getHargaKamar(p.getDaerahPerawatan()));
         for (int i = 0; i < p.perawatan.size(); i++) {
             for (int j = 0; j < p.perawatan.get(i).idAlat.size(); j++) {
@@ -190,7 +192,7 @@ public class ControlPasien {
         }
         return total;
     }
-    
+
     int cariIdItemDariIdAlat(int idAlat) {
         int x = 0;
         conn.connect();
@@ -234,8 +236,8 @@ public class ControlPasien {
             e.printStackTrace();
         }
     }
-    
-    public void UpdateTanggalKeluar(int idPerson,LocalDate tgl){
+
+    public void UpdateTanggalKeluar(int idPerson, LocalDate tgl) {
         conn.connect();
         String query = "UPDATE Pasien SET TglKeluar='" + tgl.toString() + "' WHERE IDPerson=" + idPerson + ";";
         try {
@@ -293,7 +295,7 @@ public class ControlPasien {
             e.printStackTrace();
         }
         insertObatKePerawatan(getIdPerawatanTerbaru(), perawatan.idObat);
-        insertAlatKePerawatan(getIdPerawatanTerbaru(),perawatan.idAlat);
+        insertAlatKePerawatan(getIdPerawatanTerbaru(), perawatan.idAlat);
         insertRelasiPeraPasi(pasien, getIdPerawatanTerbaru());
     }
 
@@ -341,7 +343,6 @@ public class ControlPasien {
         return id;
     }
 
-    
     private int cariIdPasien(Pasien pasien) {
         conn.connect();
         int id = 0;
@@ -369,10 +370,10 @@ public class ControlPasien {
         }
     }
 
-    public Pasien getPasienDariId(int id) {
+    public Pasien getPasienDariIdPerson(int id) {
         Pasien pasien = new Pasien();
         conn.connect();
-        String query = "SELECT * FROM Pasien WHERE IDPasien = " + id;
+        String query = "SELECT * FROM Pasien WHERE IDPerson = " + id;
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -390,18 +391,22 @@ public class ControlPasien {
                 for (int i = 0; i < listId.size(); i++) {
                     user.perawatan.add(cariPerawatanDariIdPerawatan(listId.get(i)));
                 }
-
-                user.setDaerahPerawatan(rs.getString("Daerah"));
                 user.setTanggalMasuk(rs.getDate("TglMasuk").toLocalDate());
-                user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
+                user.setDaerahPerawatan(rs.getString("Daerah"));
+                try {
+                    user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
+                } catch (Exception e) {
+                    user.setTanggalKeluar(LocalDate.MIN);
+                }
+
                 user.setDibayar(rs.getBoolean("dibayar"));
                 user.setIdCabang(rs.getInt("IDCabang"));
-                if(rs.getInt("Dibayar") == 1){
+                if (rs.getInt("Dibayar") == 1) {
                     user.setDibayar(true);
-                }else{
+                } else {
                     user.setDibayar(false);
                 }
-                
+
                 pasien = user;
             }
         } catch (SQLException e) {
@@ -523,7 +528,7 @@ public class ControlPasien {
         return obat;
     }
 
-    void cariItemDariIdItem(Item item, int id) {
+    public void cariItemDariIdItem(Item item, int id) {
         conn.connect();
         String query = "SELECT * FROM item WHERE IDItem = " + id;
         try {

@@ -23,7 +23,7 @@ public class Lihat_Obat {
 
 //         Column Names
         String[] tabel
-                = {"ID", "Nama Alat", "Jumlah", "Dosis", "Harga per Dosis"};
+                = {"Nama Alat", "Jumlah", "Dosis", "Harga per Dosis"};
 
         // design pattern strategy
         LinkedList<Item> alat = c.getItemDariIdCabang(Cabang.getInstance().getId());
@@ -34,9 +34,11 @@ public class Lihat_Obat {
         }
         String[][] data2 = new String[alat.size()][3];
         for (int i = 0; i < alat.size(); i++) {
-            data2[i][0] = alat.get(i).getNama();
-            data2[i][1] = String.valueOf(alat.get(i).getStock());
-            data2[i][2] = String.valueOf(alat.get(i).getHarga());
+            Obat obat = (Obat) alat.get(i);
+            data2[i][0] = obat.getNama();
+            data2[i][1] = String.valueOf(obat.getStock());
+            data2[i][2] = String.valueOf(obat.getHarga());
+            data2[i][3] = obat.getDosis();
         }
 
         String[][] data = data2;
@@ -49,6 +51,7 @@ public class Lihat_Obat {
         frame.add(sp);
 //        biar compact
         frame.pack();
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) {

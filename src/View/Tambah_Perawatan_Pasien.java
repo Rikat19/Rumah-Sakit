@@ -186,7 +186,7 @@ public class Tambah_Perawatan_Pasien{
             p.setDokter(cd.cariDokterDariIdDokter(Integer.valueOf(textfieldDokter.getText())));
             p.setNama(textfieldPerawatan.getText());
             
-            Pasien pasien = cp.getPasienDariId(Integer.valueOf(textfieldId.getText()));
+            Pasien pasien = cp.getPasienDariIdPerson(Integer.valueOf(textfieldId.getText()));
             cp.insertPerawatanKePasien(pasien, p);
             
             new Menu_Staff();

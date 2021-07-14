@@ -1,5 +1,8 @@
 package View;
 
+import Controller.Control;
+import Controller.ControlPasien;
+import Model.Item;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +18,8 @@ import javax.swing.event.DocumentListener;
  * @author Richard
  */
 public class Restock_Data_Storage {
-
+Control c = new Control();
+ControlPasien cp = new ControlPasien();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
 
@@ -71,19 +75,19 @@ public class Restock_Data_Storage {
         });
 
 //        cari dengan id
-        JButton cariId = new JButton("Cari dengan ID");
-        cariId.setBounds(210, 100, 140, 25);
-        cariId.setBackground(green);
-        frame.add(cariId);
-        cariId.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Edit_dengan_ID();
-                frame.hide();
-            }
-        });
+//        JButton cariId = new JButton("Cari dengan ID");
+//        cariId.setBounds(210, 100, 140, 25);
+//        cariId.setBackground(green);
+//        frame.add(cariId);
+//        cariId.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                Edit_dengan_ID();
+//                frame.hide();
+//            }
+//        });
 
 //        result box
-        JLabel namaBarang = new JLabel("Nama Barang: ");
+        JLabel namaBarang = new JLabel("id Barang: ");
         namaBarang.setBounds(15, 140, 495, 50);
         namaBarang.setBackground(Color.WHITE);
         frame.add(namaBarang);
@@ -112,6 +116,11 @@ public class Restock_Data_Storage {
         frame.add(restock);
         restock.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Item item = new Item();
+                cp.cariItemDariIdItem(item,Integer.valueOf(textfieldNama.getText()));
+                c.restokItem(item, Integer.valueOf(textfieldNama.getText()), Integer.valueOf(textfieldJml.getText()));
+                new Menu_Staff();
+                frame.hide();
                 // hapus database
                 //frame.hide();
             }
@@ -227,6 +236,9 @@ public class Restock_Data_Storage {
         restock.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // hapus database
+                
+//                Item item = cp.cariItemDariIdItem(item, )
+//                c.restokItem(item, 0, 0);
                 //frame.hide();
             }
         });

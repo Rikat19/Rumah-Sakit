@@ -304,9 +304,11 @@ public class Tagihan_Pasien {
         frame.add(cari);
         cari.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Pasien p = cp.getPasienDariId(Integer.valueOf(textfieldId.getText()));
+                Pasien p = cp.getPasienDariIdPerson(Integer.valueOf(textfieldId.getText()));
                 namaIsi.setText(p.getNama());
-                
+                TTLIsi.setText(p.getTanggalLahir().toString());
+                alamatIsi.setText(p.getAlamat());
+                tglMasukIsi.setText(p.getTanggalMasuk().toString());
                 // cari
             }
         });
@@ -324,7 +326,7 @@ public class Tagihan_Pasien {
         frame.add(cek);
         cek.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            Pasien p = cp.getPasienDariId(Integer.valueOf(textfieldId.getText()));
+            Pasien p = cp.getPasienDariIdPerson(Integer.valueOf(textfieldId.getText()));
             LocalDate tgl = LocalDate.parse(textfieldKeluar.getText());
             Cek_Tagihan(p,tgl);
             frame.hide();

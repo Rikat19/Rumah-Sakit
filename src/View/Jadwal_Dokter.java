@@ -32,7 +32,7 @@ public class Jadwal_Dokter {
 
 //        hari
         JLabel day = new JLabel();
-        day.setText("Hari\t:");
+        day.setText("Tanggal\t:");
         day.setBounds(15, 15, 75, 25);
         day.setVisible(true);
         frame.add(day);

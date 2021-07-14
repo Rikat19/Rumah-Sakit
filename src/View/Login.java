@@ -66,7 +66,6 @@ public class Login {
                 if (inputID.equals(uname) && inputPassword.equals(password)) {
                     new Menu_Admin();
                 } else {
-
                     LinkedList<Cabang> listCabang = c.getAllCabang();
                     for (int i = 0; i < listCabang.size(); i++) {
                         if (listCabang.get(i).getUsername().equals(textfieldID.getText()) && listCabang.get(i).getPassword().equals(textfieldPass.getText())) {

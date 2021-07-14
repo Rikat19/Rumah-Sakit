@@ -127,19 +127,21 @@ public class Tambah_Penyakit_Pasien{
 //        });
         
 //        cari
-        JButton cari = new JButton("Cari");
+        JButton cari = new JButton("Insert");
         cari.setBounds(370, 335, 140, 25);
         cari.setBackground(green);
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            Pasien p = cp.getPasienDariId(Integer.valueOf(textfieldID.getText()));
+            Pasien p = cp.getPasienDariIdPerson(Integer.valueOf(textfieldID.getText()));
             Penyakit pp = new Penyakit();
             pp.setNama(textfieldPenyakit.getText());
             pp.setInfectious(Integer.valueOf(textfieldInfect.getText()));
             pp.setLethality(Integer.valueOf(textfieldLethal.getText()));
             
             cp.insertPenyakitKePasien(p,pp);
+            new Menu_Staff();
+            frame.hide();
             // cari
         }
         });
