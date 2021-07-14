@@ -5,9 +5,13 @@
  */
 package ViewAdmin;
 
+import Controller.ControlPasien;
+import Model.Pasien;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,102 +23,107 @@ import javax.swing.JTextField;
  */
 public class Lihat_Penghasilan_Per_Cabang {
 
+    ControlPasien cp = new ControlPasien();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
-    
+
     public Lihat_Penghasilan_Per_Cabang() {
-     JFrame frame = new JFrame("Penghasilan Per Cabang ");
-        frame.setSize(550,550);
+        JFrame frame = new JFrame("Penghasilan Per Cabang ");
+        frame.setSize(550, 550);
         frame.setLocationRelativeTo(null);
-        
-        
 
 //        bulan
         JLabel bulan = new JLabel();
         bulan.setText("Bulan \t:");
-        bulan.setBounds(15,15,175,25);
+        bulan.setBounds(15, 15, 175, 25);
         bulan.setVisible(true);
         frame.add(bulan);
-        
+
         JTextField textfieldName = new JTextField();
         textfieldName.setBounds(210, 15, 300, 25);
         textfieldName.setBackground(Color.WHITE);
         frame.add(textfieldName);
-        
+
 //        textfieldName.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
 //            
 //        });
-
 //        Tahun
         JLabel tahun = new JLabel();
         tahun.setText("Tahun \t:");
-        tahun.setBounds(15,55,175,25);
+        tahun.setBounds(15, 55, 175, 25);
         tahun.setVisible(true);
         frame.add(tahun);
-        
+
         JTextField textfieldTTL = new JTextField();
         textfieldTTL.setBounds(210, 55, 300, 25);
         textfieldTTL.setBackground(Color.WHITE);
         frame.add(textfieldTTL);
-        
+
 //        textfieldTTL.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
 //            
 //        });
-
 //       id cabang
         JLabel cabang = new JLabel();
         cabang.setText("ID Cabang \t:");
-        cabang.setBounds(15,95,175,25);
+        cabang.setBounds(15, 95, 175, 25);
         cabang.setVisible(true);
         frame.add(cabang);
-        
+
         JTextField textfieldGender = new JTextField();
         textfieldGender.setBounds(210, 95, 300, 25);
         textfieldGender.setBackground(Color.WHITE);
         frame.add(textfieldGender);
-        
+
 //        textfieldGender.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
 //            
 //        });
-
-
 //        cari
         JButton cari = new JButton("Cari");
         cari.setBounds(370, 335, 140, 25);
         cari.setBackground(green);
         frame.add(cari);
-        cari.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            // cari
-        }
+        cari.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Pasien> p = cp.getPasienByCabang(Integer.valueOf(textfieldGender.getText()));
+                LocalDate tgl = LocalDate.parse("0001-01-01");
+                tgl = tgl.plusYears(Integer.valueOf(textfieldTTL.getText()) - 1);
+                tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
+                int total = 0;
+                for (int i = 0; i < p.size(); i++) {
+                    if(p.get(i).getTanggalKeluar().getMonth() == tgl.getMonth() && p.get(i).getTanggalKeluar().getYear() == tgl.getYear()){
+                        total += cp.getBill(p.get(i));
+                    }
+                }
+                // cari
+            }
         });
 
 //        back      
         JButton back = new JButton("Back");
-        back.setBounds(370,375,140,25);
+        back.setBounds(370, 375, 140, 25);
         back.setBackground(red);
         frame.add(back);
-        back.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            new Menu_Admin();
-            frame.hide();
-        }
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Menu_Admin();
+                frame.hide();
+            }
         });
-        
+
         frame.setLayout(null);
         frame.setVisible(true);
     }
+
     public static void main(String[] args) {
         new Lihat_Penghasilan_Per_Cabang();
     }
 }
-

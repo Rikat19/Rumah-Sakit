@@ -5,9 +5,14 @@
  */
 package ViewAdmin;
 
+import Controller.ControlPasien;
+import Model.Pasien;
+import Model.Staff;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +23,7 @@ import javax.swing.JTextField;
  * @author Devan
  */
 public class Lihat_Penghasilan_Total {
-    
+    ControlPasien cp = new ControlPasien();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
 
@@ -74,6 +79,16 @@ public class Lihat_Penghasilan_Total {
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
+            ArrayList<Pasien> p = cp.getAllPasien();
+            LocalDate tgl = LocalDate.parse("0001-01-01");
+            tgl = tgl.plusYears(Integer.valueOf(textfieldTTL.getText()) - 1);
+            tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
+            int total = 0;
+            for (int i = 0; i < p.size(); i++) {
+                if(p.get(i).getTanggalKeluar().getMonth() == tgl.getMonth() && p.get(i).getTanggalKeluar().getYear() == tgl.getYear()){
+                    total += cp.getBill(p.get(i));
+                }
+            }
             // cari
         }
         });

@@ -83,15 +83,6 @@ public class Tagihan_Pasien {
 //        });
       
 //        cari
-        JButton cari = new JButton("Cari");
-        cari.setBounds(370, 140, 140, 25);
-        cari.setBackground(green);
-        frame.add(cari);
-        cari.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // cari
-            }
-        });
 
 //        cari dengan id
         JButton cariId = new JButton("Cari dengan ID");
@@ -194,6 +185,18 @@ public class Tagihan_Pasien {
                 frame.hide();
             }
         });
+        JButton cari = new JButton("Cari");
+        cari.setBounds(370, 140, 140, 25);
+        cari.setBackground(green);
+        frame.add(cari);
+        
+        cari.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Pasien p = cp.getPasienDariAtribut(textfieldNama.getText(), textfieldTTL.getText(), textfieldAlamat.getText());
+                namaPasien.setText(p.getNama());
+                // cari
+            }
+        });
 
         frame.setLayout(null);
         frame.setVisible(true);
@@ -223,15 +226,6 @@ public class Tagihan_Pasien {
 //        });
       
 //        cari
-        JButton cari = new JButton("Cari");
-        cari.setBounds(370, 140, 140, 25);
-        cari.setBackground(green);
-        frame.add(cari);
-        cari.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // cari
-            }
-        });
 
 //        cari dengan id
         JButton cariBio = new JButton("Cari dengan Nama");
@@ -303,6 +297,19 @@ public class Tagihan_Pasien {
         textfieldKeluar.setBounds(210, 395, 300, 25);
         textfieldKeluar.setBackground(Color.WHITE);
         frame.add(textfieldKeluar);
+        
+        JButton cari = new JButton("Cari");
+        cari.setBounds(370, 140, 140, 25);
+        cari.setBackground(green);
+        frame.add(cari);
+        cari.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Pasien p = cp.getPasienDariId(Integer.valueOf(textfieldId.getText()));
+                namaIsi.setText(p.getNama());
+                
+                // cari
+            }
+        });
 
 //        textfieldKeluar.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){

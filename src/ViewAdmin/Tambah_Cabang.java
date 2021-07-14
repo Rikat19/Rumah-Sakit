@@ -5,6 +5,7 @@
  */
 package ViewAdmin;
 
+import Controller.Control;
 import Model.Cabang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -22,7 +23,7 @@ import javax.swing.event.DocumentListener;
  * @author Devan
  */
 public class Tambah_Cabang{
-    
+    Control control = new Control();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
     
@@ -142,6 +143,7 @@ public class Tambah_Cabang{
             c.setUsername(textfieldUsername.getText());
             c.setPassword(textfieldPass.getText());
             c.setKapasitasDaerah(textfieldGender.getText());
+            control.insertCabang(c);
             // cari
         }
         });

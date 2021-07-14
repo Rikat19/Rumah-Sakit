@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -102,7 +103,7 @@ Color green = new Color(0, 200, 0);
             LocalDate tgl = LocalDate.parse("0001-01-01");
             tgl = tgl.plusYears(Integer.valueOf(textfieldTTL.getText()) - 1);
             tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
-            cs.getBebanGaji(list, tgl);
+            JOptionPane.showMessageDialog(null,cs.getBebanGaji(list, tgl));
             // cari
         }
         });
