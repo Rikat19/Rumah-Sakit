@@ -62,20 +62,21 @@ public class Login {
         frame.add(login);
         login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(inputID.equals(uname) &&  inputPassword.equals(password)){
+                if (inputID.equals(uname) && inputPassword.equals(password)) {
                     new Menu_Admin();
+                } else {
+
+                    LinkedList<Cabang> listCabang = c.getAllCabang();
+                    for (int i = 0; i < listCabang.size(); i++) {
+                        if (listCabang.get(i).getUsername().equals(textfieldID.getText()) && listCabang.get(i).getPassword().equals(textfieldPass.getText())) {
+                            Cabang.setInstance(listCabang.get(i));
+                        }
                     }
-                
-                LinkedList<Cabang> listCabang = c.getAllCabang();
-                for (int i = 0; i < listCabang.size(); i++) {
-                    if(listCabang.get(i).getUsername().equals(textfieldID.getText()) && listCabang.get(i).getPassword().equals(textfieldPass.getText())){
-                        Cabang.setInstance(listCabang.get(i));
+                    Cabang.setInstance(listCabang.get(0));
+                    if (Cabang.getInstance() != null && Cabang.getInstance().getId() > 0) {
+                        new Menu_Staff();
+                        frame.hide();
                     }
-                }
-                Cabang.setInstance(listCabang.get(0));
-                if(Cabang.getInstance() != null && Cabang.getInstance().getId() > 0){
-                    new Menu_Staff();
-                    frame.hide();
                 }
             }
         });

@@ -31,13 +31,13 @@ public class Tambah_Perawatan_Pasien{
     Color red = new Color(250, 0, 0);
     
     public Tambah_Perawatan_Pasien(){
-        JFrame frame = new JFrame("Tambah Riwayat Pasien");
+        JFrame frame = new JFrame("Tambah Perawatan Pasien");
         frame.setSize(550,550);
         frame.setLocationRelativeTo(null);
         
 //        Nama Pasien
         JLabel id = new JLabel();
-        id.setText("id Pasien\t:");
+        id.setText("ID Pasien\t:");
         id.setBounds(15,15,175,25);
         id.setVisible(true);
         frame.add(id);
@@ -78,12 +78,12 @@ public class Tambah_Perawatan_Pasien{
 // *lempar
         JLabel dokter = new JLabel();
         dokter.setText("Dokter yang Merawat\t:");
-        dokter.setBounds(15,135,175,25);
+        dokter.setBounds(15,95,175,25);
         dokter.setVisible(true);
         frame.add(dokter);
         
         JButton cariDokter = new JButton("Cari");
-        cariDokter.setBounds(410, 135, 100, 25);
+        cariDokter.setBounds(410, 95, 100, 25);
         cariDokter.setBackground(green);
         frame.add(cariDokter);
         cariDokter.addActionListener(new ActionListener(){
@@ -93,7 +93,7 @@ public class Tambah_Perawatan_Pasien{
         });
         
         JTextField textfieldDokter = new JTextField();
-        textfieldDokter.setBounds(210, 135, 200, 25);
+        textfieldDokter.setBounds(210, 95, 200, 25);
         textfieldDokter.setBackground(Color.WHITE);
         frame.add(textfieldDokter);
 
@@ -104,16 +104,16 @@ public class Tambah_Perawatan_Pasien{
 //            
 //        });
 
-//        Daerah Perawatan
+//        alat
 // *lempar
         JLabel alat = new JLabel();
         alat.setText("Alat\t:");
-        alat.setBounds(15,175,175,25);
+        alat.setBounds(15,135,175,25);
         alat.setVisible(true);
         frame.add(alat);
         
         JButton cariAlat = new JButton("Cari");
-        cariAlat.setBounds(410, 175, 100, 25);
+        cariAlat.setBounds(410, 135, 100, 25);
         cariAlat.setBackground(green);
         frame.add(cariAlat);
         cariAlat.addActionListener(new ActionListener(){
@@ -123,7 +123,7 @@ public class Tambah_Perawatan_Pasien{
         });
         
         JTextField textfieldAlat = new JTextField();
-        textfieldAlat.setBounds(210, 175, 200, 25);
+        textfieldAlat.setBounds(210, 135, 200, 25);
         textfieldAlat.setBackground(Color.WHITE);
         frame.add(textfieldAlat);
 
@@ -134,16 +134,16 @@ public class Tambah_Perawatan_Pasien{
 //            
 //        });
 
-//        Daerah Perawatan
+//        obat
 // *lempar
         JLabel obat = new JLabel();
         obat.setText("Obat\t:");
-        obat.setBounds(15,215,175,25);
+        obat.setBounds(15,175,175,25);
         obat.setVisible(true);
         frame.add(obat);
         
         JButton cariObat = new JButton("Cari");
-        cariObat.setBounds(410, 215, 100, 25);
+        cariObat.setBounds(410, 175, 100, 25);
         cariObat.setBackground(green);
         frame.add(cariObat);
         cariObat.addActionListener(new ActionListener(){
@@ -153,7 +153,7 @@ public class Tambah_Perawatan_Pasien{
         });
         
         JTextField textfieldObat = new JTextField();
-        textfieldObat.setBounds(210, 215, 200, 25);
+        textfieldObat.setBounds(210, 175, 200, 25);
         textfieldObat.setBackground(Color.WHITE);
         frame.add(textfieldObat);
 
@@ -166,7 +166,7 @@ public class Tambah_Perawatan_Pasien{
         
 //        cari
         JButton cari = new JButton("Cari");
-        cari.setBounds(370, 335, 140, 25);
+        cari.setBounds(370, 220, 140, 25);
         cari.setBackground(green);
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
@@ -197,7 +197,7 @@ public class Tambah_Perawatan_Pasien{
 
 //        back      
         JButton back = new JButton("Back");
-        back.setBounds(370,375,140,25);
+        back.setBounds(370,265,140,25);
         back.setBackground(red);
         frame.add(back);
         back.addActionListener(new ActionListener(){
