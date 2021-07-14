@@ -30,7 +30,7 @@ public class Tambah_Alat{
         frame.setSize(550,350);
         frame.setLocationRelativeTo(null);
         
-//        Nama Pasien
+//        Nama Alat
         JLabel nama = new JLabel();
         nama.setText("Nama Barang\t:");
         nama.setBounds(15,15,175,25);
@@ -49,17 +49,17 @@ public class Tambah_Alat{
 //            
 //        });
 
-//        TTL Pasien
-        JLabel jenis = new JLabel();
-        jenis.setText("Jenis Barang\t:");
-        jenis.setBounds(15,55,175,25);
-        jenis.setVisible(true);
-        frame.add(jenis);
-        
-        JTextField textfieldJenis = new JTextField();
-        textfieldJenis.setBounds(210, 55, 300, 25);
-        textfieldJenis.setBackground(Color.WHITE);
-        frame.add(textfieldJenis);
+//        jenis
+//        JLabel jenis = new JLabel();
+//        jenis.setText("Jenis Barang\t:");
+//        jenis.setBounds(15,55,175,25);
+//        jenis.setVisible(true);
+//        frame.add(jenis);
+//        
+//        JTextField textfieldJenis = new JTextField();
+//        textfieldJenis.setBounds(210, 55, 300, 25);
+//        textfieldJenis.setBackground(Color.WHITE);
+//        frame.add(textfieldJenis);
         
 //        textfieldTTL.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
@@ -68,7 +68,7 @@ public class Tambah_Alat{
 //            
 //        });
 
-//        Gender
+//        jml
 // radio
         JLabel jml = new JLabel();
         jml.setText("Jumlah\t:");
@@ -136,7 +136,7 @@ public class Tambah_Alat{
             Alat alat = new Alat();
             alat.setNama(textfieldName.getText());
             alat.setIdCabang(Cabang.getInstance().getId());
-            alat.setJenisAlat(textfieldJenis.getText());
+//            alat.setJenisAlat(textfieldJenis.getText());
             alat.setKondisi(true);
             alat.setStock(Integer.valueOf(textfieldJML.getText()));
             alat.setHarga(Integer.valueOf(textfieldHarga.getText()));

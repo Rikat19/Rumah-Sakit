@@ -35,7 +35,7 @@ public class Tambah_Perawatan_Pasien{
         frame.setSize(550,550);
         frame.setLocationRelativeTo(null);
         
-//        Nama Pasien
+//        ID Pasien
         JLabel id = new JLabel();
         id.setText("ID Pasien\t:");
         id.setBounds(15,15,175,25);
@@ -54,7 +54,7 @@ public class Tambah_Perawatan_Pasien{
 //            
 //        });
 
-//        TTL Pasien
+//        perawatan
         JLabel perawatan = new JLabel();
         perawatan.setText("Perawatan\t:");
         perawatan.setBounds(15,55,175,25);

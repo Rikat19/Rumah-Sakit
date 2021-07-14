@@ -30,7 +30,7 @@ public class Tambah_Obat {
         frame.setSize(550, 350);
         frame.setLocationRelativeTo(null);
 
-//        Nama Pasien
+//        Nama Obat
         JLabel nama = new JLabel();
         nama.setText("Nama Barang\t:");
         nama.setBounds(15, 15, 175, 25);
@@ -48,17 +48,17 @@ public class Tambah_Obat {
 //            }
 //            
 //        });
-//        TTL Pasien
-        JLabel jenis = new JLabel();
-        jenis.setText("Jenis Barang\t:");
-        jenis.setBounds(15, 55, 175, 25);
-        jenis.setVisible(true);
-        frame.add(jenis);
-
-        JTextField textfieldJenis = new JTextField();
-        textfieldJenis.setBounds(210, 55, 300, 25);
-        textfieldJenis.setBackground(Color.WHITE);
-        frame.add(textfieldJenis);
+//        ???
+//        JLabel jenis = new JLabel();
+//        jenis.setText("Jenis Barang\t:");
+//        jenis.setBounds(15, 55, 175, 25);
+//        jenis.setVisible(true);
+//        frame.add(jenis);
+//
+//        JTextField textfieldJenis = new JTextField();
+//        textfieldJenis.setBounds(210, 55, 300, 25);
+//        textfieldJenis.setBackground(Color.WHITE);
+//        frame.add(textfieldJenis);
 
 //        textfieldTTL.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){

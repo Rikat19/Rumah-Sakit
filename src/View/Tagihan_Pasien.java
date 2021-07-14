@@ -229,7 +229,7 @@ public class Tagihan_Pasien {
         frame.add(cari);
         cari.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // cari
+                //cari
             }
         });
 
@@ -379,11 +379,11 @@ public class Tagihan_Pasien {
         });
 
 //        pelunasan      
-        JButton hapus = new JButton("Pelunasan");
-        hapus.setBounds(350, 330, 150, 25);
-        hapus.setBackground(green);
-        frame.add(hapus);
-        hapus.addActionListener(new ActionListener() {
+        JButton lunas = new JButton("Pelunasan");
+        lunas.setBounds(350, 330, 150, 25);
+        lunas.setBackground(green);
+        frame.add(lunas);
+        lunas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Pelunasan();
                 frame.hide();
