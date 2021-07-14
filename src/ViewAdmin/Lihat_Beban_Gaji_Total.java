@@ -5,9 +5,13 @@
  */
 package ViewAdmin;
 
+import Controller.ControlStaff;
+import Model.Staff;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +23,7 @@ import javax.swing.JTextField;
  */
 public class Lihat_Beban_Gaji_Total {
  
+    ControlStaff cs = new ControlStaff();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
 
@@ -74,6 +79,11 @@ public class Lihat_Beban_Gaji_Total {
         frame.add(cari);
         cari.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
+            ArrayList<Staff> list = cs.getAllStaff();
+            LocalDate tgl = LocalDate.parse("0001-01-01");
+            tgl = tgl.plusYears(Integer.valueOf(textfieldTTL.getText()) - 1);
+            tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
+            cs.getBebanGaji(list, tgl);
             // cari
         }
         });

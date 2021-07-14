@@ -5,11 +5,15 @@
  */
 package ViewAdmin;
 
+import Controller.Control;
+import Controller.ControlStaff;
+import Model.Staff;
 import java.awt.Color;
 import static java.awt.Color.green;
 import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
 /**
  *
  * @author Devan
@@ -25,28 +30,36 @@ import javax.swing.event.DocumentListener;
 public class Lihat_Staff {
 
     public Lihat_Staff() {
-    JFrame frame = new JFrame("Lihat Staff");
+        Control c = new Control();
+        ControlStaff cs = new ControlStaff();
+        JFrame frame = new JFrame("Lihat Staff");
         frame.setLocationRelativeTo(null);
-       
-      String[]tabel = 
-             {"ID", "Nama", "Cabang", "Tugas", "ShiftKerja", "Gaji/Bulan"};
+        ArrayList<Staff> list = cs.getAllStaff();
+
+        String[][] data2 = new String[list.size()][5];
+        for (int i = 0; i < list.size(); i++) {
+            data2[i][0] = String.valueOf(list.get(i).getId());
+            data2[i][1] = list.get(i).getNama();
+            data2[i][2] = c.getCabangDariId(list.get(i).getIdCabang()).getNama();
+            data2[i][3] = list.get(i).getTugas();
+            data2[i][4] = String.valueOf(list.get(i).getGaji());
+        }
         
-      Object[][] data ={
-            {1,"Wanto","Cabang A","Satpam","0","1500000"},
-            {2,"Iwan","Cabang B","Dokter","1","2500000"}
-      };
-        
-        
+        String[] tabel
+                = {"ID", "Nama", "Cabang", "Tugas", "Gaji/Bulan"};
+
+        Object[][] data = data2;
+
         JTable table = new JTable(data, tabel);
-        
-         JScrollPane sp = new JScrollPane(table);
+
+        JScrollPane sp = new JScrollPane(table);
         frame.add(sp);
-        
+
         frame.pack();
         frame.setVisible(true);
     }
-    
-        public static void main(String[] args) {
+
+    public static void main(String[] args) {
         new Lihat_Staff();
     }
 }

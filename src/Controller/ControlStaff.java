@@ -11,6 +11,7 @@ import Model.Staff;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -40,25 +41,27 @@ public class ControlStaff {
         }
         return (staff);
     }
-    public Staff getStaffDariIdCabang(int id) {
-        Staff s = new Staff();
+    public ArrayList<Staff> getStaffDariIdCabang(int id) {
+        ArrayList<Staff> list = new ArrayList<>();
         conn.connect();
         String query = "SELECT * FROM staff WHERE IDCabang = " + id;
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
+                Staff s = new Staff();
                 c.cariPersonDariId(s, rs.getString("IDPerson"));
                 s.setAlamat(rs.getString("Alamat"));
                 s.setGaji(rs.getInt("Gaji"));
                 s.setTugas(rs.getString("Tugas"));
                 s.setShift(parseStaffShiftToInt(rs.getString("Shift")));
                 s.setTanggalKerja(rs.getDate("Tanggal").toLocalDate());
+                list.add(s);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return s;
+        return list;
     }
     public Staff getStaffDariIdStaff(int id) {
         Staff s = new Staff();
@@ -79,6 +82,25 @@ public class ControlStaff {
             e.printStackTrace();
         }
         return s;
+    }
+    public int getBebanGaji(ArrayList<Staff> list,LocalDate tgl){
+        int total = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).getTanggalKerja().isBefore(tgl)){
+                total += list.get(i).getGaji();
+            }
+        }
+        return total;
+    }
+    public void hapusStaffDariId(int id){
+        String query = "DELETE FROM Staff WHERE IDStaff =" + id + ";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void insertStaff(Staff subject){
         c.insertPerson(subject);

@@ -31,6 +31,7 @@ public class Lihat_Data_Storage {
         // ntar pake action listener
         // panggil enum
         // design pattern strategy
+        
         LinkedList<Item> list = c.getItemDariIdCabang(Cabang.getInstance().getId());
         String[][] data2 = new String[list.size()][3];
         for (int i = 0; i < list.size(); i++) {
@@ -49,6 +50,7 @@ public class Lihat_Data_Storage {
         frame.add(sp);
 //        biar compact
         frame.pack();
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) {

@@ -27,7 +27,7 @@ public class Lihat_Pasien {
 //         Column Names
         String[] tabel
                 = {"ID", "Nama", "TTL", "Gender", "Alamat", "Daerah Perawatan", "Tanggal Masuk", "Tanggal Keluar"};
-
+//a
         // ntar pake action listener
         // panggil enum
         // design pattern strategy

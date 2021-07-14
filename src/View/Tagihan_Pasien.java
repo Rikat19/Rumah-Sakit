@@ -373,7 +373,7 @@ public class Tagihan_Pasien {
         frame.add(print);
         print.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Print_Tagihan();
+                Print_Tagihan(p,tgl);
                 frame.hide();
             }
         });
@@ -406,7 +406,7 @@ public class Tagihan_Pasien {
         frame.setVisible(true);
     }
 
-    public void Print_Tagihan() {
+    public void Print_Tagihan(Pasien p,LocalDate tgl) {
         JFrame frame = new JFrame("Print Tagihan Pasien");
         frame.setSize(550, 550);
         frame.setLocationRelativeTo(null);
@@ -424,8 +424,8 @@ public class Tagihan_Pasien {
         frame.add(ok);
         ok.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-//                cp.UpdateTanggalKeluar(p.getId(),tgl);
-//                Cek_Tagihan(p,tgl);
+                cp.UpdateTanggalKeluar(p.getId(),tgl);
+                Cek_Tagihan(p,tgl);
                 frame.hide();
             }
         });

@@ -71,6 +71,11 @@ public class ControlPasien {
                     user.setTanggalKeluar(LocalDate.MIN);
                 }
                 user.setIdCabang(rs.getInt("IDCabang"));
+                if(rs.getInt("Dibayar") == 1){
+                    user.setDibayar(true);
+                }else{
+                    user.setDibayar(false);
+                }
                 pasien.add(user);
             }
         } catch (SQLException e) {
@@ -239,6 +244,13 @@ public class ControlPasien {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        query = "UPDATE Pasien SET Dibayar='" + true + "' WHERE IDPerson=" + idPerson + ";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void insertRelasiPeraPasi(Pasien pasien, int idPerawatan) {
@@ -384,6 +396,12 @@ public class ControlPasien {
                 user.setTanggalKeluar(rs.getDate("TglKeluar").toLocalDate());
                 user.setDibayar(rs.getBoolean("dibayar"));
                 user.setIdCabang(rs.getInt("IDCabang"));
+                if(rs.getInt("Dibayar") == 1){
+                    user.setDibayar(true);
+                }else{
+                    user.setDibayar(false);
+                }
+                
                 pasien = user;
             }
         } catch (SQLException e) {

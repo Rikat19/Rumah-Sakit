@@ -5,6 +5,7 @@
  */
 package ViewAdmin;
 
+import Model.Cabang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -135,6 +136,12 @@ public class Tambah_Cabang{
         frame.add(tambah);
         tambah.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
+            Cabang c = new Cabang();
+            c.setNama(textfieldName.getText());
+            c.setAlamat(textfieldTTL.getText());
+            c.setUsername(textfieldUsername.getText());
+            c.setPassword(textfieldPass.getText());
+            c.setKapasitasDaerah(textfieldGender.getText());
             // cari
         }
         });

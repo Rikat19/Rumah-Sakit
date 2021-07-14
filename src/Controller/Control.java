@@ -122,6 +122,16 @@ public class Control {
             }
         }
     }
+    
+    public void insertCabang(Cabang c){
+        String query = "INSERT INTO Cabang (Nama, Alamat,Username,Password,Kapasitas) VALUES('" + c.getNama() + "','" + c.getAlamat() + "','" + c.getUsername() + "','" + c.getPassword() + "','" + c.getKapasitasDaerah() + "');";
+            try {
+                Statement stmt = conn.con.createStatement();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+    }
 
     public int[] parseDaerahToInt(String x) {
         x = x.trim();

@@ -49,9 +49,12 @@ public class Lihat_Dokter {
         JScrollPane sp = new JScrollPane(table);
         frame.add(sp);
 //        biar compact
-//        frame.pack();
+        frame.pack();
 
         frame.setVisible(true);
+    }
+    public static void main(String[] args) {
+        
     }
 
 }
