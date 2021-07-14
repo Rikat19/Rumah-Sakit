@@ -59,7 +59,7 @@ public class Jadwal_Dokter {
             boolean get = true;
             LocalDate x = LocalDate.MIN;
             try{
-                x = LocalDate.parse(textfieldDate.getText());
+                x = LocalDate.parse(textfieldDay.getText());
             }catch(Exception ec){
                 JOptionPane.showMessageDialog(null, "Format input salah... ini seharusnya pakai date input library.\n tapi sesuatu terjadi dan kita harus improv");
                 get = false;

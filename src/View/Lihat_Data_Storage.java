@@ -32,7 +32,7 @@ public class Lihat_Data_Storage {
         // panggil enum
         // design pattern strategy
         LinkedList<Item> list = c.getItemDariIdCabang(Cabang.getInstance().getId());
-        Object[][] data2 = new Object[list.size()][3];
+        String[][] data2 = new String[list.size()][3];
         for (int i = 0; i < list.size(); i++) {
             data2[i][0] = list.get(i).getNama();
             data2[i][1] = String.valueOf(list.get(i).getStock());

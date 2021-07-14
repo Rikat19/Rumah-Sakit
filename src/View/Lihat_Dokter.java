@@ -54,8 +54,6 @@ public class Lihat_Dokter {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new Lihat_Dokter();
-    }
+}
 
 

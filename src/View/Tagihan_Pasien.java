@@ -176,7 +176,7 @@ public class Tagihan_Pasien {
         frame.add(cek);
         cek.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            Pasien p = cp.getPasienDariAtribut(textfieldName.getText(), textfieldTTL.getText(), textfieldAlamat.getText());
+            Pasien p = cp.getPasienDariAtribut(textfieldNama.getText(), textfieldTTL.getText(), textfieldAlamat.getText());
             LocalDate tgl = LocalDate.parse(textfieldKeluar.getText());
             Cek_Tagihan(p,tgl);
             frame.hide();
@@ -317,7 +317,7 @@ public class Tagihan_Pasien {
         frame.add(cek);
         cek.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            Pasien p = cp.getPasienDariId(Integer.valueOf(textfieldID.getText()));
+            Pasien p = cp.getPasienDariId(Integer.valueOf(textfieldId.getText()));
             LocalDate tgl = LocalDate.parse(textfieldKeluar.getText());
             Cek_Tagihan(p,tgl);
             frame.hide();
@@ -424,8 +424,8 @@ public class Tagihan_Pasien {
         frame.add(ok);
         ok.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cp.UpdateTanggalKeluar(p.getId(),tgl);
-                Cek_Tagihan(p,tgl);
+//                cp.UpdateTanggalKeluar(p.getId(),tgl);
+//                Cek_Tagihan(p,tgl);
                 frame.hide();
             }
         });
