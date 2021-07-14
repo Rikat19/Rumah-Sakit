@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -18,20 +17,16 @@ import javax.swing.JTable;
  * @author Richard
  */
 public class Lihat_Pasien {
+
     ControlPasien cp = new ControlPasien();
 
     public Lihat_Pasien() {
-        JFrame frame = new JFrame("Lihat Daftar Pasien");
-        frame.setSize(650, 550);
+        JFrame frame = new JFrame("Lihat List Pasien");
         frame.setLocationRelativeTo(null);
 
-//        List Pasien
-        JLabel lihatPasien = new JLabel();
-        lihatPasien.setText("List Pasien\n");
-        lihatPasien.setBounds(15, 10, 175, 25);
-        lihatPasien.setVisible(true);
-
-        frame.add(lihatPasien);
+//         Column Names
+        String[] tabel
+                = {"ID", "Nama", "TTL", "Gender", "Alamat", "Daerah Perawatan", "Tanggal Masuk", "Tanggal Keluar"};
 
         // ntar pake action listener
         // panggil enum
@@ -50,32 +45,16 @@ public class Lihat_Pasien {
         }
         
         String[][] data = data2;
-//         Column Names
-        String[] tabel
-                = {"ID", "Nama", "TTL", "Gender", "Alamat", "Daerah Perawatan", "Tanggal Masuk", "Tanggal Keluar"};
 
 //        Initializing the JTable
         JTable table = new JTable(data, tabel);
-        table.setBounds(15, 50, 600, 300);
-        frame.add(table);
 
 //        //adding it to JScrollPane
-//        JScrollPane sp = new JScrollPane(table);
-//        frame.add(sp);
-//        back      
-        JButton back = new JButton("Back");
-        back.setBounds(450, 450, 150, 25);
-        Color red = new Color(250, 0, 0);
-        back.setBackground(red);
-        frame.add(back);
-        back.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new Menu_Staff();
-                frame.hide();
-            }
-        });
+        JScrollPane sp = new JScrollPane(table);
+        frame.add(sp);
+//        biar compact
+        frame.pack();
 
-        frame.setLayout(null);
         frame.setVisible(true);
     }
 
