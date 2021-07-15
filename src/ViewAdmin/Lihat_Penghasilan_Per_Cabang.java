@@ -130,8 +130,4 @@ public class Lihat_Penghasilan_Per_Cabang {
         frame.setLayout(null);
         frame.setVisible(true);
     }
-
-    public static void main(String[] args) {
-        new Lihat_Penghasilan_Per_Cabang();
-    }
 }

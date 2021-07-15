@@ -10,16 +10,12 @@ import Controller.ControlStaff;
 import Model.Staff;
 import java.awt.Color;
 import static java.awt.Color.green;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -236,9 +232,5 @@ public class Hapus_Staff {
 
         frame.setLayout(null);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Hapus_Staff();
     }
 }

@@ -8,20 +8,10 @@ package ViewAdmin;
 import Controller.Control;
 import Controller.ControlStaff;
 import Model.Staff;
-import java.awt.Color;
-import static java.awt.Color.green;
-import java.awt.PopupMenu;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -43,7 +33,7 @@ public class Lihat_Staff {
             data2[i][3] = list.get(i).getTugas();
             data2[i][4] = String.valueOf(list.get(i).getGaji());
         }
-        
+
         String[] tabel
                 = {"ID", "Nama", "Cabang", "Tugas", "Gaji/Bulan"};
 
@@ -56,9 +46,5 @@ public class Lihat_Staff {
 
         frame.pack();
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Lihat_Staff();
     }
 }

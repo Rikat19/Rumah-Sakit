@@ -23,89 +23,81 @@ import javax.swing.JTextField;
  * @author Devan
  */
 public class Lihat_Beban_Gaji_Total {
- 
+
     ControlStaff cs = new ControlStaff();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
 
     public Lihat_Beban_Gaji_Total() {
         JFrame frame = new JFrame("Beban Gaji Total ");
-        frame.setSize(550,550);
+        frame.setSize(550, 550);
         frame.setLocationRelativeTo(null);
-        
-        
 
 //        bulan
         JLabel bulan = new JLabel();
         bulan.setText("Bulan \t:");
-        bulan.setBounds(15,15,175,25);
+        bulan.setBounds(15, 15, 175, 25);
         bulan.setVisible(true);
         frame.add(bulan);
-        
+
         JTextField textfieldName = new JTextField();
         textfieldName.setBounds(210, 15, 300, 25);
         textfieldName.setBackground(Color.WHITE);
         frame.add(textfieldName);
-        
+
 //        textfieldName.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
 //            
 //        });
-
 //        Tahun
         JLabel tahun = new JLabel();
         tahun.setText("Tahun \t:");
-        tahun.setBounds(15,55,175,25);
+        tahun.setBounds(15, 55, 175, 25);
         tahun.setVisible(true);
         frame.add(tahun);
-        
+
         JTextField textfieldTTL = new JTextField();
         textfieldTTL.setBounds(210, 55, 300, 25);
         textfieldTTL.setBackground(Color.WHITE);
         frame.add(textfieldTTL);
-        
+
 //        textfieldTTL.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
 //            }
 //            
 //        });
-
 //        cari
         JButton cari = new JButton("Cari");
         cari.setBounds(370, 335, 140, 25);
         cari.setBackground(green);
         frame.add(cari);
-        cari.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            ArrayList<Staff> list = cs.getAllStaff();
-            LocalDate tgl = LocalDate.parse("0001-01-01");
-            tgl = tgl.plusYears(Integer.valueOf(textfieldTTL.getText()) - 1);
-            tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
-            JOptionPane.showMessageDialog(null,cs.getBebanGaji(list, tgl));
-            // cari
-        }
+        cari.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Staff> list = cs.getAllStaff();
+                LocalDate tgl = LocalDate.parse("0001-01-01");
+                tgl = tgl.plusYears(Integer.valueOf(textfieldTTL.getText()) - 1);
+                tgl = tgl.plusMonths(Integer.valueOf(textfieldName.getText()) - 1);
+                JOptionPane.showMessageDialog(null, cs.getBebanGaji(list, tgl));
+                // cari
+            }
         });
 
 //        back      
         JButton back = new JButton("Back");
-        back.setBounds(370,375,140,25);
+        back.setBounds(370, 375, 140, 25);
         back.setBackground(red);
         frame.add(back);
-        back.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            new Menu_Admin();
-            frame.hide();
-        }
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Menu_Admin();
+                frame.hide();
+            }
         });
-        
+
         frame.setLayout(null);
         frame.setVisible(true);
     }
-        public static void main(String[] args) {
-        new Lihat_Beban_Gaji_Total();
-    }
-    
 }

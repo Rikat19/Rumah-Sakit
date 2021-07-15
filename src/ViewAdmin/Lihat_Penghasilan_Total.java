@@ -7,7 +7,6 @@ package ViewAdmin;
 
 import Controller.ControlPasien;
 import Model.Pasien;
-import Model.Staff;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -111,9 +110,4 @@ public class Lihat_Penghasilan_Total {
         frame.setLayout(null);
         frame.setVisible(true);
     }
-
-    public static void main(String[] args) {
-        new Lihat_Penghasilan_Total();
-    }
-
 }
