@@ -76,15 +76,15 @@ public class Tambah_Perawatan_Pasien {
         dokter.setVisible(true);
         frame.add(dokter);
 
-        JButton cariDokter = new JButton("Cari");
-        cariDokter.setBounds(410, 95, 100, 25);
-        cariDokter.setBackground(green);
-        frame.add(cariDokter);
-        cariDokter.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new Jadwal_Dokter();
-            }
-        });
+//        JButton cariDokter = new JButton("Cari");
+//        cariDokter.setBounds(410, 95, 100, 25);
+//        cariDokter.setBackground(green);
+//        frame.add(cariDokter);
+//        cariDokter.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                new Jadwal_Dokter();
+//            }
+//        });
 
         JTextField textfieldDokter = new JTextField();
         textfieldDokter.setBounds(210, 95, 200, 25);
@@ -105,15 +105,15 @@ public class Tambah_Perawatan_Pasien {
         alat.setVisible(true);
         frame.add(alat);
 
-        JButton cariAlat = new JButton("Cari");
-        cariAlat.setBounds(410, 135, 100, 25);
-        cariAlat.setBackground(green);
-        frame.add(cariAlat);
-        cariAlat.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new Lihat_Alat();
-            }
-        });
+//        JButton cariAlat = new JButton("Cari");
+//        cariAlat.setBounds(410, 135, 100, 25);
+//        cariAlat.setBackground(green);
+//        frame.add(cariAlat);
+//        cariAlat.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                new Lihat_Alat();
+//            }
+//        });
 
         JTextField textfieldAlat = new JTextField();
         textfieldAlat.setBounds(210, 135, 200, 25);
