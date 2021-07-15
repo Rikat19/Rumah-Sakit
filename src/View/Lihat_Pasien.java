@@ -3,11 +3,7 @@ package View;
 import Controller.ControlPasien;
 import Model.Cabang;
 import Model.Pasien;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -43,7 +39,7 @@ public class Lihat_Pasien {
             data2[i][6] = list.get(i).getTanggalMasuk().toString();
             data2[i][7] = list.get(i).getTanggalKeluar().toString();
         }
-        
+
         String[][] data = data2;
 
 //        Initializing the JTable
@@ -56,9 +52,5 @@ public class Lihat_Pasien {
         frame.pack();
 
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Lihat_Pasien();
     }
 }

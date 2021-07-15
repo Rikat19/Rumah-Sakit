@@ -2,7 +2,6 @@ package View;
 
 import Controller.Control;
 import Model.Cabang;
-import Model.Status;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,14 +11,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import  ViewAdmin.*;
+import ViewAdmin.*;
 
 /**
  *
  * @author Richard
  */
 public class Login {
-    
+
     public Login() {
         String uname = "admin";
         String password = "passwordd";
@@ -53,7 +52,7 @@ public class Login {
         textfieldPass.setBackground(Color.WHITE);
         frame.add(textfieldPass);
         String inputPassword = textfieldPass.getText();
-        
+
 //        button
         JButton login = new JButton("Login");
         login.setBounds(215, 145, 100, 25);
@@ -83,9 +82,5 @@ public class Login {
 
         frame.setLayout(null);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Login();
     }
 }

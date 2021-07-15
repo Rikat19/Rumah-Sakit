@@ -4,11 +4,7 @@ import Controller.Control;
 import Model.Alat;
 import Model.Cabang;
 import Model.Item;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.LinkedList;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,7 +14,7 @@ import javax.swing.JTable;
  * @author Richard
  */
 public class Lihat_Alat {
-    
+
     Control c = new Control();
 
     public Lihat_Alat() {
@@ -42,7 +38,7 @@ public class Lihat_Alat {
             data2[i][1] = String.valueOf(alat.get(i).getStock());
             data2[i][2] = String.valueOf(alat.get(i).getHarga());
         }
-          
+
         String[][] data = data2;
 
 //        Initializing the JTable
@@ -53,9 +49,5 @@ public class Lihat_Alat {
         frame.add(sp);
 //        biar compact
         frame.pack();
-    }
-
-    public static void main(String[] args) {
-        new Lihat_Alat();
     }
 }

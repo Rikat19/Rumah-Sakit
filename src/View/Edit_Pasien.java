@@ -7,8 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -274,9 +272,5 @@ public class Edit_Pasien {
 
         frame.setLayout(null);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Edit_Pasien();
     }
 }

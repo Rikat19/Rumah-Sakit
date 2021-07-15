@@ -16,7 +16,7 @@ import javax.swing.JTable;
 public class Lihat_Obat {
 
     Control c = new Control();
-    
+
     public Lihat_Obat() {
         JFrame frame = new JFrame("Lihat List Obat");
         frame.setLocationRelativeTo(null);
@@ -52,9 +52,5 @@ public class Lihat_Obat {
 //        biar compact
         frame.pack();
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Lihat_Obat();
     }
 }

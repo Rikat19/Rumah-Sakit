@@ -56,7 +56,6 @@ public class Menu_Staff {
 //                frame.hide();
 //            }
 //        });
-
         JButton tambahPenyakit = new JButton("Tambah Penyakit Pasien");
         tambahPenyakit.setBounds(10, 80, 200, 25);
         frame.add(tambahPenyakit);
@@ -197,9 +196,5 @@ public class Menu_Staff {
         frame.setLayout(null);
         frame.setVisible(true);
 
-    }
-
-    public static void main(String[] args) {
-        new Menu_Staff();
     }
 }

@@ -1,14 +1,7 @@
 package View;
 
-
 import Model.Dokter;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,14 +12,13 @@ import javax.swing.JTable;
  */
 public class Lihat_Dokter {
 
-    public Lihat_Dokter(ArrayList<Dokter> list,int hari) {
+    public Lihat_Dokter(ArrayList<Dokter> list, int hari) {
         JFrame frame = new JFrame("Lihat List Dokter");
         frame.setLocationRelativeTo(null);
 
-            
 //         Column Names
         String[] tabel = {"ID", "Nama Dokter", "Spesialis", "Jam Mulai Praktek", "Jam Selesai Praktek", "Biaya Jasa"};
-      
+
         // ntar pake action listener
         // panggil enum
         // design pattern strategy
@@ -41,7 +33,7 @@ public class Lihat_Dokter {
         }
 
         String[][] data = data2;
-      
+
 //        Initializing the JTable
         JTable table = new JTable(data, tabel);
 
@@ -53,10 +45,4 @@ public class Lihat_Dokter {
 
         frame.setVisible(true);
     }
-    public static void main(String[] args) {
-        
-    }
-
 }
-
-

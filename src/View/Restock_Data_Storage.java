@@ -10,16 +10,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
  * @author Richard
  */
 public class Restock_Data_Storage {
-Control c = new Control();
-ControlPasien cp = new ControlPasien();
+
+    Control c = new Control();
+    ControlPasien cp = new ControlPasien();
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
 
@@ -85,7 +84,6 @@ ControlPasien cp = new ControlPasien();
 //                frame.hide();
 //            }
 //        });
-
 //        result box
         JLabel namaBarang = new JLabel("id Barang: ");
         namaBarang.setBounds(15, 140, 495, 50);
@@ -117,7 +115,7 @@ ControlPasien cp = new ControlPasien();
         restock.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Item item = new Item();
-                cp.cariItemDariIdItem(item,Integer.valueOf(textfieldNama.getText()));
+                cp.cariItemDariIdItem(item, Integer.valueOf(textfieldNama.getText()));
                 c.restokItem(item, Integer.valueOf(textfieldNama.getText()), Integer.valueOf(textfieldJml.getText()));
                 new Menu_Staff();
                 frame.hide();
@@ -236,7 +234,7 @@ ControlPasien cp = new ControlPasien();
         restock.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // hapus database
-                
+
 //                Item item = cp.cariItemDariIdItem(item, )
 //                c.restokItem(item, 0, 0);
                 //frame.hide();
@@ -257,9 +255,5 @@ ControlPasien cp = new ControlPasien();
 
         frame.setLayout(null);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Restock_Data_Storage();
     }
 }

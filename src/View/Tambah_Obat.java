@@ -1,7 +1,6 @@
 package View;
 
 import Controller.Control;
-import Model.Alat;
 import Model.Cabang;
 import Model.Obat;
 import java.awt.Color;
@@ -10,16 +9,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
  * @author Richard
  */
 public class Tambah_Obat {
+
     Control c = new Control();
 
     Color green = new Color(0, 200, 0);
@@ -59,7 +56,6 @@ public class Tambah_Obat {
 //        textfieldJenis.setBounds(210, 55, 300, 25);
 //        textfieldJenis.setBackground(Color.WHITE);
 //        frame.add(textfieldJenis);
-
 //        textfieldTTL.getDocument().addDocumentListener(new DocumentListener() {
 //            public void inputName(DocumentEvent e){
 //                System.out.println("");
@@ -157,9 +153,5 @@ public class Tambah_Obat {
 
         frame.setLayout(null);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Tambah_Obat();
     }
 }

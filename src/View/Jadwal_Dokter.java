@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -19,13 +18,13 @@ import javax.swing.JTextField;
  * @author Richard
  */
 public class Jadwal_Dokter {
-  
+
     Color green = new Color(0, 200, 0);
     Color red = new Color(250, 0, 0);
-  
-    public Jadwal_Dokter(){
+
+    public Jadwal_Dokter() {
         ControlDokter cd = new ControlDokter();
-      
+
         JFrame frame = new JFrame("Lihat Jadwal Dokter");
         frame.setSize(450, 200);
         frame.setLocationRelativeTo(null);
@@ -49,27 +48,26 @@ public class Jadwal_Dokter {
 //            
 //        });
 //        cari
-
         JButton cari = new JButton("Cari");
         cari.setBounds(275, 55, 125, 25);
         cari.setBackground(green);
         frame.add(cari);
         cari.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            boolean get = true;
-            LocalDate x = LocalDate.MIN;
-            try{
-                x = LocalDate.parse(textfieldDay.getText());
-            }catch(Exception ec){
-                JOptionPane.showMessageDialog(null, "Format input salah... ini seharusnya pakai date input library.\n tapi sesuatu terjadi dan kita harus improv");
-                get = false;
+            public void actionPerformed(ActionEvent e) {
+                boolean get = true;
+                LocalDate x = LocalDate.MIN;
+                try {
+                    x = LocalDate.parse(textfieldDay.getText());
+                } catch (Exception ec) {
+                    JOptionPane.showMessageDialog(null, "Format input salah... ini seharusnya pakai date input library.\n tapi sesuatu terjadi dan kita harus improv");
+                    get = false;
+                }
+                if (get == true) {
+                    ArrayList<Dokter> list = cd.getDokterByJadwal(x.getDayOfWeek().getValue() - 1);
+                    new Lihat_Dokter(list, x.getDayOfWeek().getValue() - 1);
+                }
+                frame.hide();
             }
-            if(get == true){
-                ArrayList<Dokter> list = cd.getDokterByJadwal(x.getDayOfWeek().getValue() - 1);
-                new Lihat_Dokter(list,x.getDayOfWeek().getValue() - 1);
-            }
-            frame.hide();
-        }
         });
 
 //        close      
@@ -86,9 +84,5 @@ public class Jadwal_Dokter {
 
         frame.setLayout(null);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Jadwal_Dokter();
     }
 }
